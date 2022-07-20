@@ -184,7 +184,7 @@ div#preloader {
 }
 
 .area-padding {
-  padding: 70px 0px 80px;
+  padding: 110px 0px 80px;
 }
 
 .area-padding-2 {
@@ -1866,7 +1866,7 @@ div#preloader {
   color: #42414f;
   font-size: 12px;
   line-height: 1;
-  margin: 0 0 15px 80px;
+  margin: 0 0 15px 0;
   padding: 10px;
   position: relative;
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
-
-Route::get('/blog', function () {
-    return view('frontend.blog');
-})->name('blog');
+Route::resource('/', HomeController::class)->only(['index', 'store']);
+Route::resource('/blog', BlogController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

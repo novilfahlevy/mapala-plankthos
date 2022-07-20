@@ -2,17 +2,17 @@
   <div class="container d-flex justify-content-between">
 
     <div class="logo">
-      <h1><a href="index.html"><span>Mapala </span>Plankthos</a></h1>
+      <h1><a href="{{ url('/') }}"><span>Mapala </span>Plankthos</a></h1>
     </div>
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-        <li><a class="nav-link scrollto" href="#about">Tentang Plankthos</a></li>
-        <li><a class="nav-link scrollto" href="#services">Visi dan Misi</a></li>
-        <li><a class="nav-link scrollto" href="#portfolio">Kegiatan</a></li>
-        <li><a class="nav-link scrollto" href="#team">Struktur</a></li>
-        <li><a href="{{ route('blog') }}">B.U.M.O</a></li>
+        <li><a class="nav-link scrollto active" href="#beranda">Beranda</a></li>
+        <li><a class="nav-link scrollto" href="#tentang">Tentang Plankthos</a></li>
+        <li><a class="nav-link scrollto" href="#visi-misi">Visi dan Misi</a></li>
+        <li><a class="nav-link scrollto" href="#kegiatan">Kegiatan</a></li>
+        <li><a class="nav-link scrollto" href="#struktur">Struktur</a></li>
+        <li><a href="{{ route('blog.index') }}">B.U.M.O</a></li>
         <li class="dropdown"><a href="#"><span>Divisi</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Divisi Mangrove</a></li>

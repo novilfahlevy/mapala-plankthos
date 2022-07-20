@@ -16,7 +16,7 @@
               <h2 class="animate__animated animate__fadeInDown">Fakultas Perikanan dan Ilmu Kelautan Universitas Mulawarman</h2>
               <p class="animate__animated animate__fadeInUp">MAPALA PLANKTHOS
               </p>
-              <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Tentang Plankthos</a>
+              <a href="#tentang" class="btn-get-started scrollto animate__animated animate__fadeInUp">Tentang Plankthos</a>
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
               <h2 class="animate__animated animate__fadeInDown">Fakultas Perikanan dan Ilmu Kelautan Universitas Mulawarman</h2>
               <p class="animate__animated animate__fadeInUp">MAPALA PLANKTHOS 
               </p>
-              <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Tentang Plankthos</a>
+              <a href="#tentang" class="btn-get-started scrollto animate__animated animate__fadeInUp">Tentang Plankthos</a>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Fakultas Perikanan dan Ilmu Kelautan Universitas Mulawarman</h2>
               <p class="animate__animated animate__fadeInUp">MAPALA PLANKTHOS</p>
-              <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Tentang Plankthos</a>
+              <a href="#tentang" class="btn-get-started scrollto animate__animated animate__fadeInUp">Tentang Plankthos</a>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
 
 @section('content')
 <!-- ======= About Section ======= -->
-<div id="about" class="about-area area-padding">
+<div id="tentang" class="about-area area-padding">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -117,7 +117,7 @@
 </div><!-- End About Section -->
 
 <!-- ======= Services Section ======= -->
-<div id="services" class="services-area area-padding">
+<div id="visi-misi" class="services-area area-padding">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -128,7 +128,7 @@
     </div>
     <div class="row text-center">
       <!-- Start Left services -->
-      <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="col-12">
         <div class="about-move">
           <div class="services-details">
             <div class="single-services">
@@ -145,7 +145,7 @@
           <!-- end about-details -->
         </div>
       </div>
-      <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="col-12">
         <div class="about-move">
           <div class="services-details">
             <div class="single-services">
@@ -184,7 +184,7 @@
 </div><!-- End Services Section -->
 
 <!-- ======= Team Section ======= -->
-<div id="team" class="our-team-area area-padding">
+<div id="struktur" class="our-team-area area-padding">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -194,14 +194,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/julak.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -222,14 +222,14 @@
         </div>
       </div>
       <!-- End column -->
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/gercep.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -250,14 +250,14 @@
         </div>
       </div>
       <!-- End column -->
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/galup.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -278,14 +278,14 @@
         </div>
       </div>
       <!-- End column -->
-      <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/cheevas.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -306,14 +306,14 @@
         </div>
       </div>
       <!-- End column -->
-        <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/panter.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -335,14 +335,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/kolesom.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -364,14 +364,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/gagak.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -393,14 +393,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/lago.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -422,14 +422,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/tile.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -451,14 +451,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/gamis.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -480,14 +480,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/madu.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -509,14 +509,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/susi.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -538,14 +538,14 @@
         </div>
       </div>
       <!-- End column -->
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-3 col-sm-3 col-xs-12 d-flex mb-3">
         <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/img/pengurus/sota.jpg') }}" alt="">
             </a>
             <div class="team-social-icon text-center">
-              <ul>
+              <ul class="d-flex justify-content-center">
                 <li>
                   <a href="#">
                     <i class="bi bi-facebook"></i>
@@ -581,14 +581,14 @@
       <div class="px-5 py-5 py-lg-0">
         <h2>Bergabung dengan kami</h2>
         <h5>Bergabunglah dengan organisasi kami!</h5>
-        <a href="#contact" class="ready-btn scrollto">Kontak Kami</a>
+        <a href="#kontak" class="ready-btn scrollto">Kontak Kami</a>
       </div>
     </div>
   </div>
 </div><!-- End Rviews Section -->
 
 <!-- ======= Portfolio Section ======= -->
-<div id="portfolio" class="portfolio-area area-padding fix">
+<div id="kegiatan" class="portfolio-area area-padding fix">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -815,7 +815,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Berita Terbaru</h2>
+            <h2>Blog Terbaru</h2>
           </div>
         </div>
       </div>
@@ -824,7 +824,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog.html">
+              <a href="{{ route('blog.show', '1') }}">
                 <img src="{{ asset('storage/img/blog/1.jpg') }}" alt="">
               </a>
             </div>
@@ -839,7 +839,7 @@
             </div>
             <div class="blog-text">
               <h4>
-                <a href="blog.html">Assumenda repud eum veniam</a>
+                <a href="{{ route('blog.show', '1') }}">Assumenda repud eum veniam</a>
               </h4>
               <p>
                 Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo
@@ -848,7 +848,7 @@
               </p>
             </div>
             <span>
-              <a href="blog.html" class="ready-btn">Lihat Selengkapnya</a>
+              <a href="{{ route('blog.show', '1') }}" class="ready-btn">Lihat Selengkapnya</a>
             </span>
           </div>
           <!-- Start single blog -->
@@ -858,7 +858,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog.html">
+              <a href="{{ route('blog.show', '1') }}">
                 <img src="{{ asset('storage/img/blog/2.jpg') }}" alt="">
               </a>
             </div>
@@ -873,7 +873,7 @@
             </div>
             <div class="blog-text">
               <h4>
-                <a href="blog.html">Explicabo magnam quibusdam.</a>
+                <a href="{{ route('blog.show', '1') }}">Explicabo magnam quibusdam.</a>
               </h4>
               <p>
                 Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo
@@ -882,7 +882,7 @@
               </p>
             </div>
             <span>
-              <a href="blog.html" class="ready-btn">Lihat Selengkapnya</a>
+              <a href="{{ route('blog.show', '1') }}" class="ready-btn">Lihat Selengkapnya</a>
             </span>
           </div>
           <!-- Start single blog -->
@@ -892,7 +892,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog.html">
+              <a href="{{ route('blog.show', '1') }}">
                 <img src="{{ asset('storage/img/blog/3.jpg') }}" alt="">
               </a>
             </div>
@@ -907,7 +907,7 @@
             </div>
             <div class="blog-text">
               <h4>
-                <a href="blog.html">Lorem ipsum dolor sit amet</a>
+                <a href="{{ route('blog.show', '1') }}">Lorem ipsum dolor sit amet</a>
               </h4>
               <p>
                 Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo
@@ -916,7 +916,7 @@
               </p>
             </div>
             <span>
-              <a href="blog.html" class="ready-btn">Lihat Selengkapnya</a>
+              <a href="{{ route('blog.show', '1') }}" class="ready-btn">Lihat Selengkapnya</a>
             </span>
           </div>
         </div>
@@ -927,7 +927,7 @@
 </div><!-- End Blog Section -->
 
 <!-- ======= Contact Section ======= -->
-<div id="contact" class="contact-area">
+<div id="kontak" class="contact-area">
   <div class="contact-inner area-padding">
     <div class="contact-overly"></div>
     <div class="container ">

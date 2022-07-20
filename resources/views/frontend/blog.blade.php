@@ -50,7 +50,7 @@
               <div class="recent-single-post">
                 <div class="post-img">
                   <a href="#">
-                    <img src="assets/img/blog/1.jpg" alt="">
+                    <img src="{{ asset('storage/img/blog/1.jpg') }}" alt="">
                   </a>
                 </div>
                 <div class="pst-content">
@@ -62,7 +62,7 @@
               <div class="recent-single-post">
                 <div class="post-img">
                   <a href="#">
-                    <img src="assets/img/blog/2.jpg" alt="">
+                    <img src="{{ asset('storage/img/blog/2.jpg') }}" alt="">
                   </a>
                 </div>
                 <div class="pst-content">
@@ -74,7 +74,7 @@
               <div class="recent-single-post">
                 <div class="post-img">
                   <a href="#">
-                    <img src="assets/img/blog/3.jpg" alt="">
+                    <img src="{{ asset('storage/img/blog/3.jpg') }}" alt="">
                   </a>
                 </div>
                 <div class="pst-content">
@@ -86,7 +86,7 @@
               <div class="recent-single-post">
                 <div class="post-img">
                   <a href="#">
-                    <img src="assets/img/blog/4.jpg" alt="">
+                    <img src="{{ asset('storage/img/blog/4.jpg') }}" alt="">
                   </a>
                 </div>
                 <div class="pst-content">
@@ -190,8 +190,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog-details.html">
-                <img src="assets/img/blog/1.jpg" alt="">
+              <a href="{{ route('blog.show', 'my-blog') }}">
+                <img src="{{ asset('storage/img/blog/1.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
@@ -212,7 +212,7 @@
               </p>
             </div>
             <span>
-              <a href="blog-details.html" class="ready-btn">Read more</a>
+              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
             </span>
           </div>
         </div>
@@ -220,8 +220,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog-details.html">
-                <img src="assets/img/blog/2.jpg" alt="">
+              <a href="{{ route('blog.show', 'my-blog') }}">
+                <img src="{{ asset('storage/img/blog/2.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
@@ -242,7 +242,7 @@
               </p>
             </div>
             <span>
-              <a href="blog-details.html" class="ready-btn">Read more</a>
+              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
             </span>
           </div>
         </div>
@@ -250,8 +250,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog-details.html">
-                <img src="assets/img/blog/3.jpg" alt="">
+              <a href="{{ route('blog.show', 'my-blog') }}">
+                <img src="{{ asset('storage/img/blog/3.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
@@ -272,7 +272,7 @@
               </p>
             </div>
             <span>
-              <a href="blog-details.html" class="ready-btn">Read more</a>
+              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
             </span>
           </div>
         </div>
@@ -280,8 +280,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog-details.html">
-                <img src="assets/img/blog/4.jpg" alt="">
+              <a href="{{ route('blog.show', 'my-blog') }}">
+                <img src="{{ asset('storage/img/blog/4.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
@@ -302,7 +302,7 @@
               </p>
             </div>
             <span>
-              <a href="blog-details.html" class="ready-btn">Read more</a>
+              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
             </span>
           </div>
         </div>
@@ -310,8 +310,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="blog-details.html">
-                <img src="assets/img/blog/5.jpg" alt="">
+              <a href="{{ route('blog.show', 'my-blog') }}">
+                <img src="{{ asset('storage/img/blog/5.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
@@ -332,7 +332,7 @@
               </p>
             </div>
             <span>
-              <a href="blog-details.html" class="ready-btn">Read more</a>
+              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
             </span>
           </div>
         </div>
