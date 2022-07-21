@@ -133,13 +133,7 @@
           <div class="services-details">
             <div class="single-services">
               <h4>Visi</h4>
-              <p>
-                mempunyai visi terwujudnya mahasiswa Fakultas 
-                Perikanan dan Ilmu Kelautan Universitas 
-                Mulawarman yang memiliki nilai lebih dan peduli 
-                dalam bidang sumberdaya perairan yang 
-                berdimensikan masyarakat dan lingkungan hidup 
-              </p>
+              {!! $setting['visi'] !!}
             </div>
           </div>
           <!-- end about-details -->
@@ -150,28 +144,7 @@
           <div class="services-details">
             <div class="single-services">
               <h4>Misi</h4>
-              <p>
-                <li>
-                  Meningkatkan kepedulian terhadap sumberdaya 
-                perairan
-                </li>
-                <br>
-                <li>
-                  Meningkatkan usaha konservasi 
-                keanekaragaman hayati
-                </li>
-                <br>
-                <li>
-                Mendukung usaha pemberdayaan masyarakat 
-                dalam rangka pelestarian sumberdaya perairan
-                </li>
-                <br>
-                <li>
-                Mendukung program-program kegiatan 
-                Mahasiswa pencinta alam Fakultas Perikanan 
-                dan Ilmu Kelautan Universitas Mulawarman
-                </li>
-              </p>
+              {!! $setting['misi'] !!}
             </div>
           </div>
           <!-- end about-details -->

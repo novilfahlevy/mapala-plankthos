@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Trait\Setting as TraitSetting;
 use Exception;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+    use TraitSetting;
     /**
      * Display a listing of the resource.
      *
@@ -16,12 +18,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = [];
-        Setting::all()->each(function($setting) use (&$settings) {
-            $settings[$setting['title']] = $setting['content'];
-        });
-
-        return view('backend.pages.setting', compact('settings'));
+        $setting = $this->getAllSettings();
+        return view('backend.pages.setting', compact('setting'));
     }
 
     /**
@@ -46,38 +44,46 @@ class SettingController extends Controller
                 case 'visi-misi' :
                     $this->saveSetting('visi', $request->visi);
                     $this->saveSetting('misi', $request->misi);
-                    return redirect(route('pengaturan'))->with('alert',
-                        ['status' => 'success', 'message' => 'Visi dan Misi berhasil diedit.']
-                    );
+                    return redirect()->route('pengaturan.index')->with('alert', [
+                        'status' => 200,
+                        'message' => 'Visi dan Misi berhasil diedit.'
+                    ]);
                 break;
                 case 'media-sosial' :
                     $this->saveSetting('facebook', $request->facebook);
                     $this->saveSetting('instagram', $request->instagram);
                     $this->saveSetting('youtube', $request->youtube);
                     $this->saveSetting('twitter', $request->twitter);
-                    return redirect(route('pengaturan'))->with('alert',
-                        ['status' => 'success', 'message' => 'Media sosial berhasil diedit.']
-                    );
+                    return redirect()->route('pengaturan.index')->with('alert', [
+                        'status' => 200,
+                        'message' => 'Media sosial berhasil diedit.'
+                    ]);
                 break;
                 case 'kontak' :
                     $this->saveSetting('whatsapp', $request->whatsapp);
                     $this->saveSetting('email', $request->email);
                     $this->saveSetting('location', $request->location);
-                    return redirect(route('pengaturan'))->with('alert',
-                        ['status' => 'success', 'message' => 'Kontak berhasil diedit.']
-                    );
+                    return redirect()->route('pengaturan.index')->with('alert', [
+                        'status' => 200,
+                        'message' => 'Kontak berhasil diedit.'
+                    ]);
                 break;
             }
         } catch (Exception $error) {
-            return redirect(route('pengaturan'))->with('alert',
-                ['status' => 'danger', 'message' => $error->getMessage()]
-            );
+            return redirect()->route('pengaturan.index')->with('alert', [
+                'status' => $error->getCode(),
+                'message' => $error->getMessage()
+            ]);
         }
     }
 
     private function saveSetting($title, $content)
     {
-        return Setting::updateOrCreate(compact('title', 'content'));
+        $oldSetting = Setting::where('title', $title);
+        if ($oldSetting->count()) {
+            return $oldSetting->update(compact('content'));
+        }
+        return Setting::create(compact('title', 'content'));
     }
 
     /**

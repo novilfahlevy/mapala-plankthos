@@ -4,6 +4,9 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\LeaderHistoryController;
+// use App\Http\Controllers\Backend\ActivityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +25,9 @@ Route::resource('/blog', BlogController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
-    Route::resource('/pengaturan', SettingController::class)->name('index', 'pengaturan');
+    Route::resource('/pengaturan', SettingController::class);
+    Route::resource('/pengguna', UserController::class);
+    Route::resource('/ketua-terdahulu', LeaderHistoryController::class);
 });
-
 
 require __DIR__.'/auth.php';
