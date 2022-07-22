@@ -7,19 +7,20 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="#beranda">Beranda</a></li>
-        <li><a class="nav-link scrollto" href="#tentang">Tentang Plankthos</a></li>
-        <li><a class="nav-link scrollto" href="#visi-misi">Visi dan Misi</a></li>
-        <li><a class="nav-link scrollto" href="#kegiatan">Kegiatan</a></li>
-        <li><a class="nav-link scrollto" href="#struktur">Struktur</a></li>
-        <li><a href="{{ route('blog.index') }}">B.U.M.O</a></li>
-        <li class="dropdown"><a href="#"><span>Divisi</span> <i class="bi bi-chevron-down"></i></a>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#beranda') : '#beranda' }}">Beranda</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#tentang') : '#tentang' }}">Tentang Plankthos</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#visi-misi') : '#visi-misi' }}">Visi dan Misi</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#kegiatan') : '#kegiatan' }}">Kegiatan</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#galeri') : '#galeri' }}">Galeri</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#struktur') : '#struktur' }}">Struktur</a></li>
+        <li><a href="#">B.U.M.O</a></li>
+        {{-- <li class="dropdown"><a href="#"><span>Divisi</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Divisi Mangrove</a></li>
             <li><a href="#">Divisi Lamun</a></li>
             <li><a href="#">Divisi Karang</a></li>
           </ul>
-        </li>
+        </li> --}}
         {{-- <li><a class="nav-link" href="#login">Login</a></li> --}}
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>

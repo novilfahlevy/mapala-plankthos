@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/', HomeController::class)->only(['index', 'store']);
-Route::resource('/blog', BlogController::class);
+Route::resource('/kegiatan', BlogController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('/ketua-terdahulu', LeaderHistoryController::class);
     Route::resource('/ulasan', ReviewController::class);
     Route::resource('/galeri', GalleryController::class);
-    Route::resource('/activity', ActivityController::class);
+    Route::resource('/kegiatan', ActivityController::class, ['as' => 'admin']);
 });
 
 require __DIR__.'/auth.php';

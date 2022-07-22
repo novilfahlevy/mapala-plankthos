@@ -33,7 +33,7 @@
           <!-- search option start -->
           <form action="#">
             <div class="search-option">
-              <input type="text" placeholder="Search...">
+              <input type="text" placeholder="Cari...">
               <button class="button" type="submit">
                 <i class="bi bi-search"></i>
               </button>
@@ -44,7 +44,7 @@
         <div class="single-blog-page">
           <!-- recent start -->
           <div class="left-blog">
-            <h4>recent post</h4>
+            <h4>Kegiatan Terbaru</h4>
             <div class="recent-post">
               <!-- start single post -->
               <div class="recent-single-post">
@@ -98,89 +98,6 @@
           </div>
           <!-- recent end -->
         </div>
-        <div class="single-blog-page">
-          <div class="left-blog">
-            <h4>categories</h4>
-            <ul>
-              <li>
-                <a href="#">Portfolio</a>
-              </li>
-              <li>
-                <a href="#">Project</a>
-              </li>
-              <li>
-                <a href="#">Design</a>
-              </li>
-              <li>
-                <a href="#">wordpress</a>
-              </li>
-              <li>
-                <a href="#">Joomla</a>
-              </li>
-              <li>
-                <a href="#">Html</a>
-              </li>
-              <li>
-                <a href="#">Website</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="single-blog-page">
-          <div class="left-blog">
-            <h4>archive</h4>
-            <ul>
-              <li>
-                <a href="#">07 July 2016</a>
-              </li>
-              <li>
-                <a href="#">29 June 2016</a>
-              </li>
-              <li>
-                <a href="#">13 May 2016</a>
-              </li>
-              <li>
-                <a href="#">20 March 2016</a>
-              </li>
-              <li>
-                <a href="#">09 Fabruary 2016</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="single-blog-page">
-          <div class="left-tags blog-tags">
-            <div class="popular-tag left-side-tags left-blog">
-              <h4>popular tags</h4>
-              <ul>
-                <li>
-                  <a href="#">Portfolio</a>
-                </li>
-                <li>
-                  <a href="#">Project</a>
-                </li>
-                <li>
-                  <a href="#">Design</a>
-                </li>
-                <li>
-                  <a href="#">Website</a>
-                </li>
-                <li>
-                  <a href="#">Joomla</a>
-                </li>
-                <li>
-                  <a href="#">Html</a>
-                </li>
-                <li>
-                  <a href="#">wordpress</a>
-                </li>
-                <li>
-                  <a href="#">Masonry</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <!-- End left sidebar -->
@@ -190,14 +107,14 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', 'my-blog') }}">
+              <a href="{{ route('kegiatan.show', 'my-blog') }}">
                 <img src="{{ asset('storage/img/blog/1.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
               <span class="comments-type">
                 <i class="bi bi-chat"></i>
-                <a href="#">11 comments</a>
+                <a href="#">11 komentar</a>
               </span>
               <span class="date-type">
                 <i class="bi bi-calendar"></i>2016-03-05 / 09:10:16
@@ -212,7 +129,7 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
+              <a href="{{ route('kegiatan.show', 'my-blog') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
         </div>
@@ -220,14 +137,14 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', 'my-blog') }}">
+              <a href="{{ route('kegiatan.show', 'my-blog') }}">
                 <img src="{{ asset('storage/img/blog/2.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
               <span class="comments-type">
                 <i class="bi bi-chat"></i>
-                <a href="#">7 comments</a>
+                <a href="#">7 komentar</a>
               </span>
               <span class="date-type">
                 <i class="bi bi-calendar"></i>2016-03-05 / 09:10:16
@@ -242,7 +159,7 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
+              <a href="{{ route('kegiatan.show', 'my-blog') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
         </div>
@@ -250,14 +167,14 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', 'my-blog') }}">
+              <a href="{{ route('kegiatan.show', 'my-blog') }}">
                 <img src="{{ asset('storage/img/blog/3.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
               <span class="comments-type">
                 <i class="bi bi-chat"></i>
-                <a href="#">13 comments</a>
+                <a href="#">13 komentar</a>
               </span>
               <span class="date-type">
                 <i class="bi bi-calendar"></i>2016-03-05 / 09:10:16
@@ -272,7 +189,7 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
+              <a href="{{ route('kegiatan.show', 'my-blog') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
         </div>
@@ -280,14 +197,14 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', 'my-blog') }}">
+              <a href="{{ route('kegiatan.show', 'my-blog') }}">
                 <img src="{{ asset('storage/img/blog/4.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
               <span class="comments-type">
                 <i class="bi bi-chat"></i>
-                <a href="#">1 comments</a>
+                <a href="#">1 komentar</a>
               </span>
               <span class="date-type">
                 <i class="bi bi-calendar"></i>2016-03-05 / 09:10:16
@@ -302,7 +219,7 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
+              <a href="{{ route('kegiatan.show', 'my-blog') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
         </div>
@@ -310,14 +227,14 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', 'my-blog') }}">
+              <a href="{{ route('kegiatan.show', 'my-blog') }}">
                 <img src="{{ asset('storage/img/blog/5.jpg') }}" alt="">
               </a>
             </div>
             <div class="blog-meta">
               <span class="comments-type">
                 <i class="bi bi-chat"></i>
-                <a href="#">10 comments</a>
+                <a href="#">10 komentar</a>
               </span>
               <span class="date-type">
                 <i class="bi bi-calendar"></i>2016-03-05 / 09:10:16
@@ -332,7 +249,7 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', 'my-blog') }}" class="ready-btn">Read more</a>
+              <a href="{{ route('kegiatan.show', 'my-blog') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
         </div>

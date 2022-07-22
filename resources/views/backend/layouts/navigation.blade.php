@@ -57,6 +57,9 @@
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center">
+                <div class="border-r pr-10">
+                    <h2>{{ $header }}</h2>
+                </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -64,7 +67,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('admin.kegiatan.index')" :active="request()->routeIs('admin.kegiatan.index')">
                         {{ __('Kegiatan') }}
                     </x-nav-link>
                 </div>

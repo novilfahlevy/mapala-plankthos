@@ -9,5 +9,10 @@ class Activity extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'content', 'thumbnail_url'];
+    protected $fillable = ['user_id', 'title', 'slug', 'content', 'thumbnail_url'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

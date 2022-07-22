@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
+use App\Trait\Upload;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ActivityController extends Controller
 {
+    use Upload;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        //
+        $activities = Activity::all();
+        return view('backend.pages.activity.index', compact('activities'));
     }
 
     /**
@@ -24,7 +31,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.activity.create');
     }
 
     /**
@@ -35,7 +42,35 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'unique:activities'],
+            'content' => ['required'],
+            'thumbnail' => ['required', 'file', 'max:5000'],
+        ]);
+
+        try {
+            $activity = new Activity();
+            $activity->user_id = auth()->user()->id;
+            $activity->title = $request->title;
+            $activity->slug = Str::slug($request->title);
+            $activity->content = $request->content;
+    
+            $filename = $this->saveFile($request->file('thumbnail'));
+            if ($filename) {
+                $activity->thumbnail_url = $filename;
+                $activity->save();
+            }
+    
+            return redirect()->route('kegiatan.index')->with('alert', [
+                'status' => 200,
+                'message' => 'Kegiatan berhasil ditambahkan.'
+            ]);
+        } catch (Exception $error) {
+            return redirect()->route('kegiatan.index')->with('alert', [
+                'status' => $error->getCode(),
+                'message' => $error->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -57,7 +92,8 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $activity = Activity::find($id);
+        return view('backend.pages.activity.edit', compact('activity'));
     }
 
     /**
@@ -69,7 +105,38 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'content' => ['required'],
+            'thumbnail' => ['file', 'max:5000'],
+        ]);
+        
+        try {
+            $activity = Activity::find($id);
+            $activity->title = $request->title;
+            $activity->slug = Str::slug($request->title);
+            $activity->content = $request->content;
+
+            $thumbnail = $request->file('thumbnail');
+            if ($thumbnail) {
+                $filename = $this->saveFile($thumbnail, $activity->thumbnail_url);
+                if ($filename) {
+                    $activity->thumbnail_url = $filename;
+                }
+            }
+
+            $activity->save();
+            
+            return redirect()->route('kegiatan.index')->with('alert', [
+                'status' => 200,
+                'message' => 'Kegiatan berhasil diedit.'
+            ]);
+        } catch (Exception $error) {
+            return redirect()->route('kegiatan.index')->with('alert', [
+                'status' => $error->getCode(),
+                'message' => $error->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -80,6 +147,19 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $activity = Activity::find($id);
+            $this->deleteFile($activity->thumbnail_url);
+            $activity->delete();
+            return redirect()->route('kegiatan.index')->with('alert', [
+                'status' => 200,
+                'message' => 'Kegiatan berhasil dihapus.'
+            ]);
+        } catch (Exception $error) {
+            return redirect()->route('kegiatan.index')->with('alert', [
+                'status' => $error->getCode(),
+                'message' => $error->getMessage()
+            ]);
+        }
     }
 }

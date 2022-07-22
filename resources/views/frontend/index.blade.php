@@ -561,12 +561,12 @@
 </div><!-- End Rviews Section -->
 
 <!-- ======= Portfolio Section ======= -->
-<div id="kegiatan" class="portfolio-area area-padding fix">
+<div id="galeri" class="portfolio-area area-padding fix">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="section-headline text-center">
-          <h2>Foto Kegiatan</h2>
+          <h2>Galeri</h2>
         </div>
       </div>
     </div>
@@ -781,23 +781,23 @@
 </div><!-- End Testimonials Section -->
 
 <!-- ======= Blog Section ======= -->
-<div id="blog" class="blog-area">
+<div id="kegiatan" class="blog-area">
   <div class="blog-inner area-padding">
     <div class="blog-overly"></div>
     <div class="container ">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Blog Terbaru</h2>
+            <h2>Kegiatan Terbaru</h2>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mb-5">
         <!-- Start Left Blog -->
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', '1') }}">
+              <a href="{{ route('kegiatan.show', '1') }}">
                 <img src="{{ asset('storage/img/blog/1.jpg') }}" alt="">
               </a>
             </div>
@@ -812,7 +812,7 @@
             </div>
             <div class="blog-text">
               <h4>
-                <a href="{{ route('blog.show', '1') }}">Assumenda repud eum veniam</a>
+                <a href="{{ route('kegiatan.show', '1') }}">Assumenda repud eum veniam</a>
               </h4>
               <p>
                 Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo
@@ -821,7 +821,7 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', '1') }}" class="ready-btn">Lihat Selengkapnya</a>
+              <a href="{{ route('kegiatan.show', '1') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
           <!-- Start single blog -->
@@ -831,7 +831,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', '1') }}">
+              <a href="{{ route('kegiatan.show', '1') }}">
                 <img src="{{ asset('storage/img/blog/2.jpg') }}" alt="">
               </a>
             </div>
@@ -846,7 +846,7 @@
             </div>
             <div class="blog-text">
               <h4>
-                <a href="{{ route('blog.show', '1') }}">Explicabo magnam quibusdam.</a>
+                <a href="{{ route('kegiatan.show', '1') }}">Explicabo magnam quibusdam.</a>
               </h4>
               <p>
                 Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo
@@ -855,7 +855,7 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', '1') }}" class="ready-btn">Lihat Selengkapnya</a>
+              <a href="{{ route('kegiatan.show', '1') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
           <!-- Start single blog -->
@@ -865,7 +865,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="single-blog">
             <div class="single-blog-img">
-              <a href="{{ route('blog.show', '1') }}">
+              <a href="{{ route('kegiatan.show', '1') }}">
                 <img src="{{ asset('storage/img/blog/3.jpg') }}" alt="">
               </a>
             </div>
@@ -880,7 +880,7 @@
             </div>
             <div class="blog-text">
               <h4>
-                <a href="{{ route('blog.show', '1') }}">Lorem ipsum dolor sit amet</a>
+                <a href="{{ route('kegiatan.show', '1') }}">Lorem ipsum dolor sit amet</a>
               </h4>
               <p>
                 Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo
@@ -889,11 +889,14 @@
               </p>
             </div>
             <span>
-              <a href="{{ route('blog.show', '1') }}" class="ready-btn">Lihat Selengkapnya</a>
+              <a href="{{ route('kegiatan.show', '1') }}" class="ready-btn">Baca Kelanjutannya</a>
             </span>
           </div>
         </div>
         <!-- End Right Blog-->
+      </div>
+      <div class="text-center">
+        <a href="{{ route('kegiatan.index') }}" class="ready-btn text-dark border-dark">Lihat Selengkapnya</a>
       </div>
     </div>
   </div>

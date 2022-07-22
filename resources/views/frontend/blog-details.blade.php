@@ -146,9 +146,9 @@
                       <span class="email-notes">Email anda tidak akan dipublikasikan</span>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment">
-                      <p>Website</p>
+                      <p>Komentar</p>
                       <textarea id="message-box" cols="30" rows="10"></textarea>
-                      <input type="submit" value="Komentar" />
+                      <input type="submit" value="Unggah" />
                     </div>
                   </div>
                 </form>

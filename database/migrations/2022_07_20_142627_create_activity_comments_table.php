@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('activity_comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('activity_id')->constrained('activities');
+            $table->boolean('is_author');
             $table->string('name', 50);
+            $table->string('email', 50);
             $table->text('comment');
             $table->timestamps();
         });

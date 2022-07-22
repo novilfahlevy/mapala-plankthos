@@ -9,5 +9,5 @@ class ActivityComment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['activity_id', 'name', 'comment'];
+    protected $fillable = ['activity_id', 'is_author', 'name', 'email', 'comment'];
 }
