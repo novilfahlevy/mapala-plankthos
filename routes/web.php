@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\LeaderHistoryController;
+use App\Http\Controllers\Backend\ReviewController;
 // use App\Http\Controllers\Backend\ActivityController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('/pengaturan', SettingController::class);
     Route::resource('/pengguna', UserController::class);
     Route::resource('/ketua-terdahulu', LeaderHistoryController::class);
+    Route::resource('/ulasan', ReviewController::class);
 });
 
 require __DIR__.'/auth.php';
