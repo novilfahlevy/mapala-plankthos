@@ -42,8 +42,14 @@ class SettingController extends Controller
         try {
             switch ($request->title) {
                 case 'visi-misi' :
+                    $request->validate([
+                        'visi' => ['required'],
+                        'misi' => ['required'],
+                    ]);
+
                     $this->saveSetting('visi', $request->visi);
                     $this->saveSetting('misi', $request->misi);
+
                     return redirect()->route('pengaturan.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Visi dan Misi berhasil diedit.'
@@ -54,15 +60,23 @@ class SettingController extends Controller
                     $this->saveSetting('instagram', $request->instagram);
                     $this->saveSetting('youtube', $request->youtube);
                     $this->saveSetting('twitter', $request->twitter);
+
                     return redirect()->route('pengaturan.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Media sosial berhasil diedit.'
                     ]);
                 break;
                 case 'kontak' :
+                    $request->validate([
+                        'whatsapp' => ['required'],
+                        'email' => ['required'],
+                        'location' => ['required']
+                    ]);
+
                     $this->saveSetting('whatsapp', $request->whatsapp);
                     $this->saveSetting('email', $request->email);
                     $this->saveSetting('location', $request->location);
+
                     return redirect()->route('pengaturan.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Kontak berhasil diedit.'

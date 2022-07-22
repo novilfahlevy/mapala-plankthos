@@ -42,6 +42,13 @@ class LeaderHistoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required'],
+            'nim' => ['required'],
+            'from_year' => ['required'],
+            'photo' => ['required', 'file', 'max:5000']
+        ]);
+
         try {
             $leader = new LeaderHistory();
             $leader->name = $request->name;

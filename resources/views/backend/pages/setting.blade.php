@@ -21,10 +21,16 @@
                         <div class="mb-10">
                             <label for="visi" class="mb-2 block">Visi</label>
                             <div id="visiEditor"></div>
+                            @error('visi')
+                            <p class="text-red-800 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="mb-10">
                             <label for="misi" class="mb-2 block">Misi</label>
                             <div id="misiEditor"></div>
+                            @error('misi')
+                            <p class="text-red-800 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
                         <button class="button" type="submit">Submit</button>
                     </form>
@@ -80,16 +86,25 @@
                             <div>
                                 <label for="whatsapp" class="mb-2 block">Nomor Whatsapp</label>
                                 <x-input type="text" name="whatsapp" id="whatsapp" class="w-full" value="{{ $setting['whatsapp'] }}"></x-input>
+                                @error('whatsapp')
+                                <p class="text-red-800 mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div>
                                 <label for="email" class="mb-2 block">Email</label>
                                 <x-input type="text" name="email" id="email" class="w-full" value="{{ $setting['email'] }}"></x-input>
+                                @error('email')
+                                <p class="text-red-800 mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div>
                                 <label for="location" class="mb-2 block">Lokasi (embed Google Maps)</label>
                                 <textarea type="text" name="location" id="location" class="w-full" placeholder="Beserta tag iframe" cols="30" rows="10">
                                     {{ $setting['location'] }}
                                 </textarea>
+                                @error('location')
+                                <p class="text-red-800 mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <button class="button" type="submit">Submit</button>

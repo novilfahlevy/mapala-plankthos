@@ -25,19 +25,31 @@
                     <div class="flex flex-col mb-5">
                       <label for="name" class="mb-2">Nama</label>
                       <x-input type="text" name="name" id="name" value="{{ $leader->name }}" required />
+                      @error('name')
+                      <p class="text-red-800">{{ $message }}</p>
+                      @enderror
                     </div>
                     <div class="flex flex-col mb-5">
                       <label for="nim" class="mb-2">NIM</label>
                       <x-input type="text" name="nim" id="nim" value="{{ $leader->nim }}" required />
+                      @error('nim')
+                      <p class="text-red-800">{{ $message }}</p>
+                      @enderror
                     </div>
                     <div class="grid grid-cols-2 gap-10 mb-10">
                       <div class="flex flex-col">
                         <label for="from_year" class="mb-2">Dari Tahun</label>
                         <x-input type="number" name="from_year" value="{{ $leader->from_year }}" id="from_year" required />
+                        @error('from_year')
+                        <p class="text-red-800">{{ $message }}</p>
+                        @enderror
                       </div>
                       <div class="flex flex-col">
                         <label for="to_year" class="mb-2">Sampai Tahun</label>
                         <x-input type="number" name="to_year" id="to_year" value="{{ $leader->to_year }}" required />
+                        @error('to_year')
+                        <p class="text-red-800">{{ $message }}</p>
+                        @enderror
                       </div>
                     </div>
                     <button class="button !bg-green-800">Edit</button>
@@ -51,6 +63,9 @@
                       <img x-show="photoBase64" :src="photoBase64" class="!w-full !h-full !rounded-sm p-1" alt="photo">
                       <img x-show="!photoBase64" :src="photoUrl" class="!w-full !h-full !rounded-sm p-1" alt="photo">
                     </label>
+                    @error('photo')
+                    <p class="text-red-800">{{ $message }}</p>
+                    @enderror
                   </div>
                 </div>
               </form>

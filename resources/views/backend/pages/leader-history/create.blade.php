@@ -24,19 +24,31 @@
                     <div class="flex flex-col mb-5">
                       <label for="name" class="mb-2">Nama</label>
                       <x-input type="text" name="name" id="name" required />
+                      @error('name')
+                      <p class="text-red-800 mt-2">{{ $message }}</p>
+                      @enderror
                     </div>
                     <div class="flex flex-col mb-5">
                       <label for="nim" class="mb-2">NIM</label>
                       <x-input type="text" name="nim" id="nim" required />
+                      @error('nim')
+                      <p class="text-red-800 mt-2">{{ $message }}</p>
+                      @enderror
                     </div>
                     <div class="grid grid-cols-2 gap-10 mb-10">
                       <div class="flex flex-col">
                         <label for="from_year" class="mb-2">Dari Tahun</label>
                         <x-input type="number" name="from_year" id="from_year" required />
+                        @error('from_year')
+                        <p class="text-red-800 mt-2">{{ $message }}</p>
+                        @enderror
                       </div>
                       <div class="flex flex-col">
                         <label for="to_year" class="mb-2">Sampai Tahun</label>
                         <x-input type="number" name="to_year" id="to_year" required />
+                        @error('from_to')
+                        <p class="text-red-800 mt-2">{{ $message }}</p>
+                        @enderror
                       </div>
                     </div>
                     <button class="button !bg-green-800">Tambah</button>
@@ -50,6 +62,9 @@
                       <img x-show="photoBase64" :src="photoBase64" class="!w-full !h-full !rounded-sm p-1" alt="photo">
                       <span x-show="!photoBase64">Taruh foto disini</span>
                     </label>
+                    @error('photo')
+                    <p class="text-red-800 mt-2">{{ $message }}</p>
+                    @enderror
                   </div>
                 </div>
               </form>

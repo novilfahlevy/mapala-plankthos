@@ -18,14 +18,23 @@
                   <div class="flex flex-col">
                     <label for="name" class="mb-2">Nama</label>
                     <x-input type="text" name="name" id="name" value="{{ $user['name'] }}" required></x-input>
+                    @error('name')
+                    <p class="text-red-800 mt-2">{{ $message }}</p>
+                    @enderror
                   </div>
                   <div class="flex flex-col">
                     <label for="email" class="mb-2">Email</label>
                     <x-input type="email" name="email" id="email" value="{{ $user['email'] }}" required></x-input>
+                    @error('email')
+                    <p class="text-red-800 mt-2">{{ $message }}</p>
+                    @enderror
                   </div>
                   <div class="flex flex-col">
                     <label for="password" class="mb-2">Password</label>
                     <x-input type="text" name="password" id="password"></x-input>
+                    @error('password')
+                    <p class="text-red-800 mt-2">{{ $message }}</p>
+                    @enderror
                   </div>
                 </div>
                 <button class="button !bg-green-800">Tambah</button>
