@@ -3,11 +3,12 @@
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\LeaderHistoryController;
 use App\Http\Controllers\Backend\ReviewController;
-// use App\Http\Controllers\Backend\ActivityController;
+use App\Http\Controllers\Backend\ActivityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('/pengguna', UserController::class);
     Route::resource('/ketua-terdahulu', LeaderHistoryController::class);
     Route::resource('/ulasan', ReviewController::class);
+    Route::resource('/galeri', GalleryController::class);
+    Route::resource('/activity', ActivityController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Review;
+use App\Models\Gallery;
 use App\Trait\Upload;
 use Exception;
 use Illuminate\Http\Request;
 
-class ReviewController extends Controller
+class GalleryController extends Controller
 {
     use Upload;
 
@@ -19,8 +19,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
-        return view('backend.pages.review.index', compact('reviews'));
+        $galleries = Gallery::all();
+        return view('backend.pages.gallery.index', compact('galleries'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.review.create');
+        return view('backend.pages.gallery.create');
     }
 
     /**
@@ -42,30 +42,27 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
-            'position' => ['required'],
-            'comment' => ['required'],
+            'title' => ['required'],
             'photo' => ['required', 'file', 'max:5000']
         ]);
 
         try {
-            $review = new Review();
-            $review->name = $request->name;
-            $review->position = $request->position;
-            $review->comment = $request->comment;
+            $gallery = new Gallery();
+            $gallery->title = $request->title;
+            $gallery->division = $request->division;
     
             $filename = $this->saveFile($request->file('photo'));
             if ($filename) {
-                $review->photo_url = $filename;
-                $review->save();
+                $gallery->photo_url = $filename;
+                $gallery->save();
             }
     
-            return redirect()->route('ulasan.index')->with('alert', [
+            return redirect()->route('galeri.index')->with('alert', [
                 'status' => 200,
-                'message' => 'Ulasan berhasil ditambahkan.'
+                'message' => 'Galeri berhasil ditambahkan.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('ulasan.index')->with('alert', [
+            return redirect()->route('galeri.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);
@@ -91,8 +88,8 @@ class ReviewController extends Controller
      */
     public function edit($id)
     {
-        $review = Review::find($id);
-        return view('backend.pages.review.edit', compact('review'));
+        $gallery = Gallery::find($id);
+        return view('backend.pages.gallery.edit', compact('gallery'));
     }
 
     /**
@@ -105,33 +102,31 @@ class ReviewController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => ['required'],
-            'position' => ['required'],
-            'comment' => ['required'],
+            'title' => ['required'],
+            'photo' => ['file', 'max:5000']
         ]);
-
+        
         try {
-            $review = Review::find($id);
-            $review->name = $request->name;
-            $review->position = $request->position;
-            $review->comment = $request->comment;
+            $gallery = Gallery::find($id);
+            $gallery->title = $request->title;
+            $gallery->division = $request->division;
 
             $photo = $request->file('photo');
             if ($photo) {
-                $filename = $this->saveFile($photo, $review->photo_url);
+                $filename = $this->saveFile($photo, $gallery->photo_url);
                 if ($filename) {
-                    $review->photo_url = $filename;
+                    $gallery->photo_url = $filename;
                 }
             }
 
-            $review->save();
+            $gallery->save();
             
-            return redirect()->route('ulasan.index')->with('alert', [
+            return redirect()->route('galeri.index')->with('alert', [
                 'status' => 200,
-                'message' => 'Ulasan berhasil diedit.'
+                'message' => 'Galeri berhasil diedit.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('ulasan.index')->with('alert', [
+            return redirect()->route('galeri.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);
@@ -147,15 +142,15 @@ class ReviewController extends Controller
     public function destroy($id)
     {
         try {
-            $review = Review::find($id);
-            $this->deleteFile($review->photo_url);
-            $review->delete();
-            return redirect()->route('ulasan.index')->with('alert', [
+            $gallery = Gallery::find($id);
+            $this->deleteFile($gallery->photo_url);
+            $gallery->delete();
+            return redirect()->route('galeri.index')->with('alert', [
                 'status' => 200,
-                'message' => 'Ulasan berhasil dihapus.'
+                'message' => 'Galeri berhasil dihapus.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('ulasan.index')->with('alert', [
+            return redirect()->route('galeri.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
-            $table->string('division', 100);
+            $table->string('division', 100)->nullable();
             $table->string('photo_url', 50);
             $table->timestamps();
         });

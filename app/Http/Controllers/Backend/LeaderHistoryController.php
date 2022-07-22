@@ -46,6 +46,7 @@ class LeaderHistoryController extends Controller
             'name' => ['required'],
             'nim' => ['required'],
             'from_year' => ['required'],
+            'to_year' => ['required'],
             'photo' => ['required', 'file', 'max:5000']
         ]);
 
@@ -106,6 +107,13 @@ class LeaderHistoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => ['required'],
+            'nim' => ['required'],
+            'from_year' => ['required'],
+            'to_year' => ['required'],
+        ]);
+
         try {
             $leader = LeaderHistory::find($id);
             $leader->name = $request->name;

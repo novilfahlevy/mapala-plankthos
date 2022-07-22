@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('activity_comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->text('title');
-            $table->longText('content');
-            $table->string('thumbnail_url', 50);
+            $table->foreignId('activity_id')->constrained('activities');
+            $table->string('name', 50);
+            $table->text('comment');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('activity_comments');
     }
 };

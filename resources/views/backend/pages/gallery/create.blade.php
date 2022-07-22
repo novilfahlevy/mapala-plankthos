@@ -10,55 +10,44 @@
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
               <div class="mb-10">
-                <a href="{{ route('ulasan.index') }}" class="button">Kembali</a>
+                <a href="{{ route('galeri.index') }}" class="button">Kembali</a>
               </div>
               <form
                 x-data="createReview()"
-                action="{{ route('ulasan.update', $review->id) }}"
+                action="{{ route('galeri.store') }}"
                 method="POST"
                 enctype="multipart/form-data"
               >
                 @csrf
-                @method('PUT')
                 <div class="grid grid-cols-[50%,20%] gap-10 mb-10">
                   <div>
                     <div class="flex flex-col mb-5">
-                      <label for="name" class="mb-2">Nama</label>
-                      <x-input type="text" name="name" id="name" value="{{ $review->name }}" required />
-                      @error('name')
-                      <p class="text-red-800">{{ $message }}</p>
-                      @enderror
-                    </div>
-                    <div class="flex flex-col mb-5">
-                      <label for="position" class="mb-2">Profesi</label>
-                      <x-input type="text" name="position" id="position" value="{{ $review->position }}" required />
-                      @error('position')
-                      <p class="text-red-800">{{ $message }}</p>
-                      @enderror
-                    </div>
-                    <div class="flex flex-col mb-5">
-                      <label for="comment" class="mb-2">Ulasan</label>
-                      <textarea name="comment" id="comment" cols="30" rows="10" required>{{ $review->comment }}</textarea>
-                      @error('comment')
+                      <label for="title" class="mb-2">Nama Kegiatan</label>
+                      <x-input type="text" name="title" id="title" required />
+                      @error('title')
                       <p class="text-red-800 mt-2">{{ $message }}</p>
                       @enderror
                     </div>
-                    <button class="button !bg-green-800">Edit</button>
+                    <div class="flex flex-col mb-5">
+                      <label for="division" class="mb-2">Divisi</label>
+                      <x-input type="text" name="division" id="division" />
+                    </div>
                   </div>
                   <div>
                     <label
-                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[200px] w-[200px]"
+                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[200px] !w-[300px]"
                       id="dropzone"
                     >
                       <input type="file" name="photo" class="hidden" @change="generateBase64">
-                      <img x-show="photoBase64" :src="photoBase64" class="w-full h-full rounded-sm p-1" alt="photo">
-                      <img x-show="!photoBase64" :src="photoUrl" class="w-full h-full rounded-sm p-1" alt="photo">
+                      <img x-show="photoBase64" :src="photoBase64" class="w-full h-full !rounded-sm p-1" alt="photo">
+                      <span x-show="!photoBase64">Taruh foto disini</span>
                     </label>
                     @error('photo')
-                    <p class="text-red-800">{{ $message }}</p>
+                    <p class="text-red-800 mt-2">{{ $message }}</p>
                     @enderror
                   </div>
                 </div>
+                <button class="button !bg-green-800">Tambah</button>
               </form>
             </div>
           </div>
@@ -69,7 +58,6 @@
     <script>
       function createReview() {
         return {
-          photoUrl: `{{ asset('storage/uploads/'.$review->photo_url) }}`,
           photoBase64: null,
           generateBase64(event) {
             const file = event.target.files
