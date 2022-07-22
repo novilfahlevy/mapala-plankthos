@@ -133,7 +133,7 @@
           <div class="services-details">
             <div class="single-services">
               <h4>Visi</h4>
-              {!! $setting['visi'] !!}
+              {!! $information['visi'] !!}
             </div>
           </div>
           <!-- end about-details -->
@@ -144,7 +144,7 @@
           <div class="services-details">
             <div class="single-services">
               <h4>Misi</h4>
-              {!! $setting['misi'] !!}
+              {!! $information['misi'] !!}
             </div>
           </div>
           <!-- end about-details -->

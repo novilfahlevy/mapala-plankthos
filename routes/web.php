@@ -4,7 +4,7 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GalleryController;
-use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\LeaderHistoryController;
 use App\Http\Controllers\Backend\ReviewController;
@@ -27,7 +27,7 @@ Route::resource('/kegiatan', BlogController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
-    Route::resource('/pengaturan', SettingController::class);
+    Route::resource('/informasi', InformationController::class);
     Route::resource('/pengguna', UserController::class);
     Route::resource('/ketua-terdahulu', LeaderHistoryController::class);
     Route::resource('/ulasan', ReviewController::class);

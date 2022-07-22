@@ -14,7 +14,7 @@
               <div class="mb-10">
                 <a href="{{ route('ketua-terdahulu.create') }}" class="button">+ Tambah</a>
               </div>
-              <table class="border-collapse table-fixed w-full text-sm">
+              <table class="border-collapse table-fixed w-full text-sm mb-5">
                 <thead>
                   <tr>
                     <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
@@ -41,7 +41,7 @@
                   @foreach ($leaders as $leader)
                   <tr>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
-                      {{ $loop->index + 1 }}
+                      {{ (($leaders->perPage() * $leaders->currentPage()) - $leaders->perPage()) + ($loop->index + 1) }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
                       <img src="{{ asset('storage/uploads/'.$leader->photo_url) }}" width="100" height="100" alt="Ketua Pendahulu">
@@ -87,7 +87,8 @@
                   </tr>
                   @endforeach
                 </tbody>
-              </table>  
+              </table>
+              {{ $leaders->links() }}
             </div>
           </div>
       </div>

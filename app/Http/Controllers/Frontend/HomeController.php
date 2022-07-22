@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
-use App\Trait\Setting as TraitSetting;
+use App\Models\Information;
+use App\Trait\Information as TraitInformation;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    use TraitSetting;
+    use TraitInformation;
 
     public function index()
     {
-        $setting = $this->getAllSettings();
-        return view('frontend.index', compact('setting'));
+        $information = $this->getAllInformations();
+        return view('frontend.index', compact('information'));
     }
 }

@@ -1,2 +1,12 @@
 *
+
+!img
+!img/*
+!img/**/*.*
+
+!vendor
+!vendor/*
+!vendor/**
+!vendor/**/*.*
+
 !.gitignore

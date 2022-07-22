@@ -87,13 +87,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('ketua-terdahulu.index')" :active="request()->routeIs('ketua-terdahulu.index')">
-                        {{ __('Stuktur Organisasi') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('pengaturan.index')" :active="request()->routeIs('pengaturan.index')">
-                        {{ __('Pengaturan') }}
+                    <x-nav-link :href="route('informasi.index')" :active="request()->routeIs('informasi.index')">
+                        {{ __('Informasi') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

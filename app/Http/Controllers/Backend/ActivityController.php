@@ -20,7 +20,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::all();
+        $activities = Activity::paginate();
         return view('backend.pages.activity.index', compact('activities'));
     }
 

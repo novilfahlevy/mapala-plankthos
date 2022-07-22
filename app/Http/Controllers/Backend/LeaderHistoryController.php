@@ -20,7 +20,7 @@ class LeaderHistoryController extends Controller
      */
     public function index()
     {
-        $leaders = LeaderHistory::all();
+        $leaders = LeaderHistory::paginate(10);
         return view('backend.pages.leader-history.index', compact('leaders'));
     }
 

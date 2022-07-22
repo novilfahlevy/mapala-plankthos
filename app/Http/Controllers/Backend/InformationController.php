@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
-use App\Trait\Setting as TraitSetting;
+use App\Models\Information;
+use App\Trait\Information as TraitInformation;
 use Exception;
 use Illuminate\Http\Request;
 
-class SettingController extends Controller
+class InformationController extends Controller
 {
-    use TraitSetting;
+    use TraitInformation;
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +19,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $setting = $this->getAllSettings();
-        return view('backend.pages.setting', compact('setting'));
+        $information = $this->getAllInformations();
+        return view('backend.pages.information', compact('information'));
     }
 
     /**
@@ -47,10 +48,10 @@ class SettingController extends Controller
                         'anggota' => ['required'],
                     ]);
 
-                    $this->saveSetting('angkatan', $request->angkatan);
-                    $this->saveSetting('anggota', $request->anggota);
+                    $this->saveInformation('angkatan', $request->angkatan);
+                    $this->saveInformation('anggota', $request->anggota);
 
-                    return redirect()->route('pengaturan.index')->with('alert', [
+                    return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Angkatan dan anggota berhasil diedit.'
                     ]);
@@ -62,22 +63,22 @@ class SettingController extends Controller
                         'misi' => ['required'],
                     ]);
 
-                    $this->saveSetting('visi', $request->visi);
-                    $this->saveSetting('misi', $request->misi);
+                    $this->saveInformation('visi', $request->visi);
+                    $this->saveInformation('misi', $request->misi);
 
-                    return redirect()->route('pengaturan.index')->with('alert', [
+                    return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Visi dan Misi berhasil diedit.'
                     ]);
                 break;
 
                 case 'media-sosial' :
-                    $this->saveSetting('facebook', $request->facebook);
-                    $this->saveSetting('instagram', $request->instagram);
-                    $this->saveSetting('youtube', $request->youtube);
-                    $this->saveSetting('twitter', $request->twitter);
+                    $this->saveInformation('facebook', $request->facebook);
+                    $this->saveInformation('instagram', $request->instagram);
+                    $this->saveInformation('youtube', $request->youtube);
+                    $this->saveInformation('twitter', $request->twitter);
 
-                    return redirect()->route('pengaturan.index')->with('alert', [
+                    return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Media sosial berhasil diedit.'
                     ]);
@@ -90,31 +91,31 @@ class SettingController extends Controller
                         'location' => ['required']
                     ]);
 
-                    $this->saveSetting('whatsapp', $request->whatsapp);
-                    $this->saveSetting('email', $request->email);
-                    $this->saveSetting('location', $request->location);
+                    $this->saveInformation('whatsapp', $request->whatsapp);
+                    $this->saveInformation('email', $request->email);
+                    $this->saveInformation('location', $request->location);
 
-                    return redirect()->route('pengaturan.index')->with('alert', [
+                    return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Kontak berhasil diedit.'
                     ]);
                 break;
             }
         } catch (Exception $error) {
-            return redirect()->route('pengaturan.index')->with('alert', [
+            return redirect()->route('informasi.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);
         }
     }
 
-    private function saveSetting($title, $content)
+    private function saveInformation($title, $content)
     {
-        $oldSetting = Setting::where('title', $title);
-        if ($oldSetting->count()) {
-            return $oldSetting->update(compact('content'));
+        $oldInformation = Information::where('title', $title);
+        if ($oldInformation->count()) {
+            return $oldInformation->update(compact('content'));
         }
-        return Setting::create(compact('title', 'content'));
+        return Information::create(compact('title', 'content'));
     }
 
     /**
