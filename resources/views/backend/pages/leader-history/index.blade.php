@@ -9,7 +9,7 @@
 
   <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div class="bg-white shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
               <div class="mb-10">
                 <a href="{{ route('ketua-terdahulu.create') }}" class="button">+ Tambah</a>
@@ -56,18 +56,33 @@
                       {{ $leader->created_at->format('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
-                      <a href="{{ route('ketua-terdahulu.edit', $leader->id) }}" class="button !bg-sky-800">Edit</a>
-                      <form
-                        class="inline-block"
-                        id="deleteLeader"
-                        action="{{ route('ketua-terdahulu.destroy', $leader->id) }}"
-                        onsubmit="return confirm('Apakah anda yakin ingin menghapus user ini?')"
-                        method="POST"
-                      >
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="button !bg-red-800">Hapus</button>
-                      </form>
+                      <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                          <svg class="fill-current h-5 w-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                          </svg>
+                        </x-slot>
+    
+                        <x-slot name="content">
+                          <x-dropdown-link :href="route('ketua-terdahulu.edit', $leader->id)">
+                            {{ __('Edit') }}
+                          </x-dropdown-link>
+                          <form
+                            action="{{ route('ketua-terdahulu.destroy', $leader->id) }}"
+                            method="POST"
+                          >
+                            @csrf
+                            @method('DELETE')
+                            <x-dropdown-link
+                              href="#"
+                              onclick="event.preventDefault();
+                              confirm('Apakah anda yakin ingin menghapus data ini?') && this.closest('form').submit();"
+                            >
+                              {{ __('Hapus') }}
+                            </x-dropdown-link>
+                          </form>
+                        </x-slot>
+                      </x-dropdown>
                     </td>
                   </tr>
                   @endforeach

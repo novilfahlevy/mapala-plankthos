@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\LeaderHistory;
+use App\Trait\Upload;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class LeaderHistoryController extends Controller
 {
+    use Upload;
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +49,7 @@ class LeaderHistoryController extends Controller
             $leader->from_year = $request->from_year;
             $leader->to_year = $request->to_year;
     
-            $filename = Storage::disk('uploads')->put('/', $request->file('photo'));
+            $filename = $this->saveFile($request->file('photo'));
             if ($filename) {
                 $leader->photo_url = $filename;
                 $leader->save();
@@ -105,7 +108,7 @@ class LeaderHistoryController extends Controller
 
             $photo = $request->file('photo');
             if ($photo) {
-                $filename = Storage::disk('uploads')->put('/', $photo);
+                $filename = $this->saveFile($photo, $leader->photo_url);
                 if ($filename) {
                     $leader->photo_url = $filename;
                 }
@@ -134,7 +137,9 @@ class LeaderHistoryController extends Controller
     public function destroy($id)
     {
         try {
-            LeaderHistory::destroy($id);
+            $leader = LeaderHistory::find($id);
+            $this->deleteFile($leader->photo_url);
+            $leader->delete();
             return redirect()->route('ketua-terdahulu.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Ketua berhasil dihapus.'

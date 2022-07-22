@@ -14,11 +14,12 @@
               </div>
               <form
                 x-data="createLeaderHistory()"
-                action="{{ route('ketua-terdahulu.store') }}"
+                action="{{ route('ketua-terdahulu.update', $leader->id) }}"
                 method="POST"
                 enctype="multipart/form-data"
               >
                 @csrf
+                @method('PUT')
                 <div class="grid grid-cols-[50%,20%] gap-10 mb-10">
                   <div>
                     <div class="flex flex-col mb-5">

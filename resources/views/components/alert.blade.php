@@ -9,7 +9,7 @@
     x-data="{ open: true }"
     x-init="setTimeout(() => open = false, 3000)"
     x-show="open"
-    {{ $attributes->merge(['class' => 'px-4 py-5 bg-'.$type.'-800']) }}
+    class="{{ 'px-4 py-5 bg-'.$type.'-800' }}"
   >
     <span class="text-white text-center block">{{ $message }}</span>
   </div>
