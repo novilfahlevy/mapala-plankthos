@@ -15,6 +15,9 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
+        Setting::create(['title' => 'angkatan', 'content' => '0']);
+        Setting::create(['title' => 'anggota', 'content' => '0']);
+
         Setting::create(['title' => 'visi', 'content' => '']);
         Setting::create(['title' => 'misi', 'content' => '']);
 

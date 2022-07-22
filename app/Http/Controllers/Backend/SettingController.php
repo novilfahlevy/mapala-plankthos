@@ -41,6 +41,21 @@ class SettingController extends Controller
     {
         try {
             switch ($request->title) {
+                case 'angkatan-anggota' :
+                    $request->validate([
+                        'angkatan' => ['required'],
+                        'anggota' => ['required'],
+                    ]);
+
+                    $this->saveSetting('angkatan', $request->angkatan);
+                    $this->saveSetting('anggota', $request->anggota);
+
+                    return redirect()->route('pengaturan.index')->with('alert', [
+                        'status' => 200,
+                        'message' => 'Angkatan dan anggota berhasil diedit.'
+                    ]);
+                break;
+
                 case 'visi-misi' :
                     $request->validate([
                         'visi' => ['required'],
@@ -55,6 +70,7 @@ class SettingController extends Controller
                         'message' => 'Visi dan Misi berhasil diedit.'
                     ]);
                 break;
+
                 case 'media-sosial' :
                     $this->saveSetting('facebook', $request->facebook);
                     $this->saveSetting('instagram', $request->instagram);
@@ -66,6 +82,7 @@ class SettingController extends Controller
                         'message' => 'Media sosial berhasil diedit.'
                     ]);
                 break;
+                
                 case 'kontak' :
                     $request->validate([
                         'whatsapp' => ['required'],

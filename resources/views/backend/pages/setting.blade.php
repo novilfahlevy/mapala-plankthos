@@ -12,6 +12,38 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <h2 class="mb-5 text-xl">Jumlah Angkatan dan Anggota</h2>
+                    <form action="{{ route('pengaturan.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="title" value="angkatan-anggota">
+                        <div class="grid grid-cols-2 gap-10 mb-10">
+                            <div>
+                                <label for="angkatan" class="mb-2 block">Angkatan</label>
+                                <x-input type="number" class="w-full" name="angkatan" id="angkatan" value="{{ $setting['angkatan'] }}" />
+                                @error('angkatan')
+                                <p class="text-red-800 mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="anggota" class="mb-2 block">Anggota</label>
+                                <x-input type="number" class="w-full" name="anggota" id="anggota" value="{{ $setting['anggota'] }}" />
+                                @error('anggota')
+                                <p class="text-red-800 mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <button class="button" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Visi misi --}}
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="mb-5 text-xl">Visi dan Misi</h2>
                     <form action="{{ route('pengaturan.store') }}" method="POST">
                         @csrf
