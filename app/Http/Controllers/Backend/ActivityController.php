@@ -61,12 +61,12 @@ class ActivityController extends Controller
                 $activity->save();
             }
     
-            return redirect()->route('kegiatan.index')->with('alert', [
+            return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Kegiatan berhasil ditambahkan.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('kegiatan.index')->with('alert', [
+            return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);
@@ -93,7 +93,8 @@ class ActivityController extends Controller
     public function edit($id)
     {
         $activity = Activity::find($id);
-        return view('backend.pages.activity.edit', compact('activity'));
+        $comments = $activity->comments()->orderBy('created_at')->paginate(10);
+        return view('backend.pages.activity.edit', compact('activity', 'comments'));
     }
 
     /**
@@ -127,12 +128,12 @@ class ActivityController extends Controller
 
             $activity->save();
             
-            return redirect()->route('kegiatan.index')->with('alert', [
+            return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Kegiatan berhasil diedit.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('kegiatan.index')->with('alert', [
+            return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);
@@ -151,12 +152,12 @@ class ActivityController extends Controller
             $activity = Activity::find($id);
             $this->deleteFile($activity->thumbnail_url);
             $activity->delete();
-            return redirect()->route('kegiatan.index')->with('alert', [
+            return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Kegiatan berhasil dihapus.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('kegiatan.index')->with('alert', [
+            return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);

@@ -20,8 +20,9 @@
               >
                 @csrf
                 <div class="mb-5">
+                  <p class="mb-2">Thumbnail</p>
                   <label
-                    class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[200px] !w-[300px]"
+                    class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[300px] !w-[400px]"
                     id="dropzone"
                   >
                     <input type="file" name="thumbnail" class="hidden" @change="generateBase64">
@@ -61,7 +62,7 @@
           init() {
             initEditor('contentEditor')
             .then(editor => {
-                editor.editing.view.document.on('keyup', (evt, data) => {
+                editor.editing.view.document.on('change', (evt, data) => {
                     document.getElementById('content').value = editor.getData();
                 });
             })

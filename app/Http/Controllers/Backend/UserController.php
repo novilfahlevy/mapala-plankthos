@@ -106,7 +106,10 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = Hash::make($request->password);
+            if ($request->password) {
+                $user->password = Hash::make($request->password);
+            }
+
             $user->save();
 
             return redirect()->route('pengguna.index')->with('alert', [

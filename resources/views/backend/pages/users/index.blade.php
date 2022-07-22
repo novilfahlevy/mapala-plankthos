@@ -50,18 +50,18 @@
                       {{ $user->created_at->format('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
-                      @if ($user->id != auth()->user()->id)
                       <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                           <svg class="fill-current h-5 w-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                           </svg>
                         </x-slot>
-    
+                        
                         <x-slot name="content">
                           <x-dropdown-link :href="route('pengguna.edit', $user->id)">
                             {{ __('Edit') }}
                           </x-dropdown-link>
+                          @if ($user->id != auth()->user()->id)
                           <form
                             action="{{ route('pengguna.destroy', $user->id) }}"
                             method="POST"
@@ -76,12 +76,9 @@
                               {{ __('Hapus') }}
                             </x-dropdown-link>
                           </form>
+                          @endif
                         </x-slot>
                       </x-dropdown>
-                      </form>
-                      @else
-                      <p class="mb-0">Akun anda</p>
-                      @endif
                     </td>
                   </tr>
                   @endforeach

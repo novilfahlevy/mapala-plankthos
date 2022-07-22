@@ -14,6 +14,7 @@
               </div>
               <form action="{{ route('pengguna.update', $user['id']) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="grid grid-cols-2 gap-10 mb-10">
                   <div class="flex flex-col">
                     <label for="name" class="mb-2">Nama</label>
@@ -29,6 +30,7 @@
                     <p class="text-red-800 mt-2">{{ $message }}</p>
                     @enderror
                   </div>
+                  @if ($user['id'] == auth()->user()->id)
                   <div class="flex flex-col">
                     <label for="password" class="mb-2">Password</label>
                     <x-input type="text" name="password" id="password"></x-input>
@@ -36,8 +38,9 @@
                     <p class="text-red-800 mt-2">{{ $message }}</p>
                     @enderror
                   </div>
+                  @endif
                 </div>
-                <button class="button !bg-green-800">Tambah</button>
+                <button class="button !bg-green-800">Edit</button>
               </form>
             </div>
           </div>

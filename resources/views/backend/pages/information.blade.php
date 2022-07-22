@@ -153,7 +153,7 @@
     initEditor('visiEditor')
     .then(editor => {
         editor.setData(`{!! $information['visi'] !!}`);
-        editor.editing.view.document.on('keyup', (evt, data) => {
+        editor.editing.view.document.on('change', (evt, data) => {
             document.getElementById('visi').value = editor.getData();
         });
     })
@@ -162,7 +162,7 @@
     initEditor('misiEditor', 'misi')
     .then(editor => {
         editor.setData(`{!! $information['misi'] !!}`);
-        editor.editing.view.document.on('keyup', (evt, data) => {
+        editor.editing.view.document.on('change', (evt, data) => {
             document.getElementById('misi').value = editor.getData();
         });
     })

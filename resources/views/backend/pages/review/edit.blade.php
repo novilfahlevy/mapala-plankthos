@@ -20,7 +20,20 @@
               >
                 @csrf
                 @method('PUT')
-                <div class="grid grid-cols-[50%,20%] gap-10 mb-10">
+                <div class="grid grid-cols-[30%,1fr] mb-10">
+                  <div>
+                    <p class="mb-2">Foto</p>
+                    <label
+                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[300px] w-[300px]"
+                    >
+                      <input type="file" name="photo" class="hidden" @change="generateBase64">
+                      <img x-show="photoBase64" :src="photoBase64" class="w-full h-full rounded-sm p-1" alt="photo">
+                      <img x-show="!photoBase64" :src="photoUrl" class="w-full h-full rounded-sm p-1" alt="photo">
+                    </label>
+                    @error('photo')
+                    <p class="text-red-800">{{ $message }}</p>
+                    @enderror
+                  </div>
                   <div>
                     <div class="flex flex-col mb-5">
                       <label for="name" class="mb-2">Nama</label>
@@ -43,22 +56,9 @@
                       <p class="text-red-800 mt-2">{{ $message }}</p>
                       @enderror
                     </div>
-                    <button class="button !bg-green-800">Edit</button>
-                  </div>
-                  <div>
-                    <label
-                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[200px] w-[200px]"
-                      id="dropzone"
-                    >
-                      <input type="file" name="photo" class="hidden" @change="generateBase64">
-                      <img x-show="photoBase64" :src="photoBase64" class="w-full h-full rounded-sm p-1" alt="photo">
-                      <img x-show="!photoBase64" :src="photoUrl" class="w-full h-full rounded-sm p-1" alt="photo">
-                    </label>
-                    @error('photo')
-                    <p class="text-red-800">{{ $message }}</p>
-                    @enderror
                   </div>
                 </div>
+                <button class="button !bg-green-800">Edit</button>
               </form>
             </div>
           </div>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->text('title');
+            $table->text('slug');
             $table->longText('content');
             $table->string('thumbnail_url', 50);
             $table->timestamps();

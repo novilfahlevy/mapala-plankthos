@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Backend\ActivityCommentController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
+
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\InformationController;
@@ -9,6 +11,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\LeaderHistoryController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\ActivityController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('/ulasan', ReviewController::class);
     Route::resource('/galeri', GalleryController::class);
     Route::resource('/kegiatan', ActivityController::class, ['as' => 'admin']);
+    Route::resource('/komentar-kegiatan', ActivityCommentController::class, ['as' => 'admin']);
 });
 
 require __DIR__.'/auth.php';
