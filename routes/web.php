@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', HomeController::class)->only(['index', 'store']);
 Route::resource('/kegiatan', FrontendActivityController::class);
+Route::get('/cari-kegiatan', 'App\Http\Controllers\Frontend\ActivityController@search')->name('cari-kegiatan');
 Route::resource('/komentar-kegiatan', FrontendActivityCommentController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {

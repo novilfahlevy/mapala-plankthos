@@ -27,6 +27,11 @@ class ActivityController extends Controller
 
         return view('frontend.pages.blog', compact('activities'));
     }
+
+    public function search(Request $request)
+    {
+        return redirect(route('kegiatan.index').'?cari='.$request->keyword);
+    }
     
     /**
      * Show the form for creating a new resource.

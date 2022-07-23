@@ -35,13 +35,14 @@
           <div class="page-head-blog">
             <div class="single-blog-page">
               <!-- search option start -->
-              <form x-data="{ keyword: '' }" :action="keyword">
+              <form action="{{ route('cari-kegiatan') }}">
                 <div class="search-option">
                   <input
                     type="text"
+                    name="keyword"
+                    id="keyword"
                     placeholder="Cari kegiatan..."
                     value="{{ request()->query->has('cari') ? request()->query->get('cari') : '' }}"
-                    @keyup="keyword = `{{ route('kegiatan.index') }}?cari=${event.target.value}`"
                   >
                   {{-- <button class="button" type="submit">
                     <i class="bi bi-search"></i>

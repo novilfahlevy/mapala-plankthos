@@ -54,7 +54,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="copyright text-center">
             <p>
-              &copy; Copyright <strong>Mahasiswa Pecinta Alam Fakultas Teknik Universitas Mulawarman</strong>. All Rights Reserved
+              &copy; Copyright <strong>Mahasiswa Pecinta Alam (Mapala) Fakultas Teknik Universitas Mulawarman</strong>. All Rights Reserved
             </p>
           </div>
           <div class="credits">
