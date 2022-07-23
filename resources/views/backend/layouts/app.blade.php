@@ -7,6 +7,10 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Favicons -->
+        <link href="{{ asset('storage/img/logompl.png') }}" rel="icon">
+        <link href="{{ asset('storage/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 

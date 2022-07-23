@@ -43,23 +43,19 @@ class InformationController extends Controller
     {
         try {
             switch ($request->title) {
-                case 'angkatan-anggota' :
+                case 'organisasi' :
                     $this->saveInformation('angkatan', $request->angkatan);
                     $this->saveInformation('anggota', $request->anggota);
                     $this->saveInformation('tentang', $request->tentang);
                     
                     $structureFile = $request->file('struktur');
-                    if ($structureFile->isValid()) {
-                        $oldFilename = Information::select('content')->whereTitle('struktur')->first();
-                        $filename = $this->resizeAndSave($structureFile, 400, 600, $oldFilename ? $oldFilename->content : null);
-                        $this->saveInformation('struktur', $filename);
-                    } else {
-                        dd(123);
-                    }
+                    $oldFilename = Information::select('content')->whereTitle('struktur')->first();
+                    $filename = $this->resizeAndSave($structureFile, 400, 600, $oldFilename ? $oldFilename->content : null);
+                    $this->saveInformation('struktur', $filename);
 
                     return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
-                        'message' => 'Angkatan dan anggota berhasil diedit.'
+                        'message' => 'Organisasi berhasil diedit.'
                     ]);
                 break;
 

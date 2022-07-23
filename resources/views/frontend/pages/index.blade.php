@@ -308,7 +308,7 @@
         </div>
       </div>
     </div>
-    <img src="{{ asset('storage/uploads/'.$information['struktur']) }}" class="mx-auto" alt="Struktur Organisasi Mapala Plankthos">
+    <img src="{{ asset('storage/uploads/'.$information['struktur']) }}" class="border-5 border-slate-50 shadow-sm mx-auto" alt="Struktur Organisasi Mapala Plankthos">
   </div>
 </div>
 <!-- End Team Section -->
