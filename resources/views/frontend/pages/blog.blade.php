@@ -63,7 +63,10 @@
                     <img src="{{ asset('storage/uploads/'.$activity->thumbnail_url) }}" alt="{{ $activity->title }}">
                   </a>
                 </div>
-                <a href="{{ route('kegiatan.show', $activity->slug) }}" class="absolute inset-0 bg-black bg-opacity-50 cursor-pointer flex flex-col items-center justify-center">
+                <a
+                  href="{{ route('kegiatan.show', $activity->slug) }}"
+                  class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:!opacity-100 cursor-pointer flex flex-col items-center justify-center"
+                >
                   <h5 class="text-white">{{ strlen($activity->title) > 20 ? substr($activity->title, 0, 20).'...' : $activity->title }}</h5>
                   <p class="text-white">{{ $activity->comments()->count() }} comments</p>
                 </a>

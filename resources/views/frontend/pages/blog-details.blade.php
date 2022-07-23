@@ -5,20 +5,8 @@
 <div class="blog-page mt-32">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-4">
+      <div class="col-12 col-lg-4 order-2 lg:!order-1">
         <div class="page-head-blog">
-          <div class="single-blog-page">
-            <!-- search option start -->
-            <form action="#">
-              <div class="search-option">
-                <input type="text" placeholder="Search...">
-                <button class="button" type="submit">
-                  <i class="bi bi-search"></i>
-                </button>
-              </div>
-            </form>
-            <!-- search option end -->
-          </div>
           <div class="single-blog-page">
             <!-- recent start -->
             <div class="left-blog">
@@ -32,8 +20,12 @@
                       <img src="{{ asset('storage/uploads/'.$recent->thumbnail_url) }}" alt="{{ $recent->title }}">
                     </a>
                   </div>
-                  <div class="pst-content">
-                    <h5><a href="{{ route('kegiatan.show', $recent->slug) }}">{{ $recent->title }}</a></h5>
+                  <div class="pst-content break-words">
+                    <h5 class="leading-8">
+                      <a href="{{ route('kegiatan.show', $recent->slug) }}">
+                        {{ strlen($recent->title) > 35 ? substr($recent->title, 0, 35).'...' : $recent->title }}
+                      </a>
+                    </h5>
                   </div>
                 </div>
                 <!-- End single post -->
@@ -48,7 +40,7 @@
       </div>
       <!-- End left sidebar -->
       <!-- Start single blog -->
-      <div class="col-md-8 col-sm-8 col-xs-12">
+      <div class="col-12 col-lg-8 order-1 lg:!order-2">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <!-- single-blog start -->
