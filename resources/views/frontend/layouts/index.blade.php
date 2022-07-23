@@ -26,6 +26,7 @@
   <link href="{{ asset('storage/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
   <link href="{{ asset('storage/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
+  @vite(['resources/css/app.css'])
   @include('frontend.style')
 
   <!-- =======================================================
@@ -63,6 +64,7 @@
   <script src="{{ asset('storage/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ asset('storage/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
+  @vite(['resources/js/app.js'])
   @include('frontend.script')
 
 </body>

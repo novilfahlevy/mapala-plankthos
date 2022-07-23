@@ -20,4 +20,21 @@ class Activity extends Model
     {
         return $this->hasMany(ActivityComment::class, 'activity_id', 'id');
     }
+
+    public function scopeSlug($query, $slug)
+    {
+        return $query->where('slug', 'LIKE', "%$slug%");
+    }
+
+    public function scopeRecents($query, $limit, $except = null)
+    {
+        $query
+            // ->select(['id', 'slug', 'title', 'thumbnail_url', 'created_at'])
+            ->orderByDesc('created_at')
+            ->limit($limit);
+
+        if ($except) $query->whereNot('id', $except)->whereNot('slug', $except);
+
+        return $query;
+    }
 }

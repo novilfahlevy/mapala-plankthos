@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
+use App\Trait\Information;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use Information;
+
     /**
      * Register any application services.
      *
@@ -25,5 +29,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Carbon::setlocale(config('app.locale'));
+
+        // Pass information data to footer
+        View::composer(
+            'frontend.layouts.footer',
+            function($view) {
+                $information = $this->getAllInformations();
+                $view->with('information', $information);
+            }
+        );
     }
 }

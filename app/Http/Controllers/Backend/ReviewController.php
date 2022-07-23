@@ -54,7 +54,7 @@ class ReviewController extends Controller
             $review->position = $request->position;
             $review->comment = $request->comment;
     
-            $filename = $this->saveFile($request->file('photo'));
+            $filename = $this->resizeAndSave($request->file('photo'), 400, 400);
             if ($filename) {
                 $review->photo_url = $filename;
                 $review->save();
@@ -118,7 +118,7 @@ class ReviewController extends Controller
 
             $photo = $request->file('photo');
             if ($photo) {
-                $filename = $this->saveFile($photo, $review->photo_url);
+                $filename = $this->resizeAndSave($photo, 400, 400, $review->photo_url);
                 if ($filename) {
                     $review->photo_url = $filename;
                 }

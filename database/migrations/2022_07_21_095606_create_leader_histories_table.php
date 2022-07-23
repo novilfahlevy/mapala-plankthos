@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nim', 20);
             $table->string('from_year');
             $table->string('to_year');
-            $table->string('photo_url', 50);
+            $table->string('photo_url')->nullable();
             $table->timestamps();
         });
     }

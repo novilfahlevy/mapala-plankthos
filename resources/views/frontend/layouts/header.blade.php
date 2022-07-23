@@ -10,18 +10,12 @@
         <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#beranda') : '#beranda' }}">Beranda</a></li>
         <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#tentang') : '#tentang' }}">Tentang Plankthos</a></li>
         <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#visi-misi') : '#visi-misi' }}">Visi dan Misi</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#testimonials') : '#testimonials' }}">Ulasan</a></li>
         <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#kegiatan') : '#kegiatan' }}">Kegiatan</a></li>
-        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#galeri') : '#galeri' }}">Galeri</a></li>
-        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#struktur') : '#struktur' }}">Struktur</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#ketua-terdahulu') : '#ketua-terdahulu' }}">Ketua Terdahulu</a></li>
+        <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#struktur') : '#struktur' }}">Stuktur Organisasi</a></li>
+        {{-- <li><a class="nav-link scrollto" href="{{ request()->routeIs('kegiatan.index') || request()->routeIs('kegiatan.show') ? url('/#galeri') : '#galeri' }}">Galeri</a></li> --}}
         <li><a href="#">B.U.M.O</a></li>
-        {{-- <li class="dropdown"><a href="#"><span>Divisi</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Divisi Mangrove</a></li>
-            <li><a href="#">Divisi Lamun</a></li>
-            <li><a href="#">Divisi Karang</a></li>
-          </ul>
-        </li> --}}
-        {{-- <li><a class="nav-link" href="#login">Login</a></li> --}}
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

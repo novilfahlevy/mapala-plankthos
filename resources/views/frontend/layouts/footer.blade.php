@@ -8,22 +8,21 @@
               <div class="footer-logo">
                 <h2><span>Mapala</span> Plankthos</h2>
               </div>
-
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+              <p>Wujudkan alam yang indah, bersih, dan nyaman untuk semua makhluk hidup.</p>
+              <p>Ikuti media sosial kami:</p>
               <div class="footer-icons">
                 <ul>
                   <li>
-                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="{{ $information['facebook'] }}"><i class="bi bi-facebook"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="{{ $information['twitter'] }}"><i class="bi bi-twitter"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="{{ $information['instagram'] }}"><i class="bi bi-instagram"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    <a href="{{ $information['youtube'] }}"><i class="bi bi-youtube"></i></a>
                   </li>
                 </ul>
               </div>
@@ -36,12 +35,11 @@
             <div class="footer-head">
               <h4>information</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                Bila ada keinginan untuk bekerja sama ataupun melakukan kegiatan bersama, kami dapat dihubungi melalui:
               </p>
               <div class="footer-contacts">
-                <p><span>Tel:</span> +123 456 789</p>
-                <p><span>Email:</span> contact@example.com</p>
-                <p><span>Working Hours:</span> 9am-5pm</p>
+                <p><span>WA:</span> {{ $information['whatsapp'] }}</p>
+                <p><span>Email:</span> {{ $information['email'] }}</p>
               </div>
             </div>
           </div>

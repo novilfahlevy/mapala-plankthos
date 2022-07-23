@@ -51,7 +51,7 @@ class GalleryController extends Controller
             $gallery->title = $request->title;
             $gallery->division = $request->division;
     
-            $filename = $this->saveFile($request->file('photo'));
+            $filename = $this->resizeAndSave($request->file('photo'), 800, 640);
             if ($filename) {
                 $gallery->photo_url = $filename;
                 $gallery->save();
@@ -113,7 +113,7 @@ class GalleryController extends Controller
 
             $photo = $request->file('photo');
             if ($photo) {
-                $filename = $this->saveFile($photo, $gallery->photo_url);
+                $filename = $this->saveFile($photo, 800, 640, $gallery->photo_url);
                 if ($filename) {
                     $gallery->photo_url = $filename;
                 }

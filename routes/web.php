@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Backend\ActivityCommentController;
-use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ActivityController as FrontendActivityController;
+use App\Http\Controllers\Frontend\ActivityCommentController as FrontendActivityCommentController;
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GalleryController;
@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\LeaderHistoryController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\ActivityController;
+use App\Http\Controllers\Backend\ActivityCommentController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/', HomeController::class)->only(['index', 'store']);
-Route::resource('/kegiatan', BlogController::class);
+Route::resource('/kegiatan', FrontendActivityController::class);
+Route::resource('/komentar-kegiatan', FrontendActivityCommentController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('dashboard', DashboardController::class)->name('dashboard');

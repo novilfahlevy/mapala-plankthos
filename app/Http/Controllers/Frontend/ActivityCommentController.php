@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityComment;
+use Exception;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class ActivityCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('frontend.blog');
+        //
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +37,22 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'comment' => 'required'
+        ]);
+
+        $comment = new ActivityComment();
+        $comment->activity_id = $request->activityId;
+        $comment->is_author = false;
+        $comment->email = $request->email;
+        $comment->name = $request->name;
+        $comment->comment = $request->comment;
+
+        $comment->save();
+
+        return back();
     }
 
     /**
@@ -44,9 +61,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        return view('frontend.blog-details');
+        //
     }
 
     /**

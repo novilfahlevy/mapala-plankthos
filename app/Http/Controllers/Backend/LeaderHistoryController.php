@@ -57,7 +57,7 @@ class LeaderHistoryController extends Controller
             $leader->from_year = $request->from_year;
             $leader->to_year = $request->to_year;
     
-            $filename = $this->saveFile($request->file('photo'));
+            $filename = $this->resizeAndSave($request->file('photo'), 1800, 2400);
             if ($filename) {
                 $leader->photo_url = $filename;
                 $leader->save();
@@ -123,7 +123,7 @@ class LeaderHistoryController extends Controller
 
             $photo = $request->file('photo');
             if ($photo) {
-                $filename = $this->saveFile($photo, $leader->photo_url);
+                $filename = $this->saveFile($photo, 1800, 2400, $leader->photo_url);
                 if ($filename) {
                     $leader->photo_url = $filename;
                 }

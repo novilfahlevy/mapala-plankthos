@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Information;
 use App\Trait\Information as TraitInformation;
+use App\Trait\Upload;
 use Exception;
 use Illuminate\Http\Request;
 
 class InformationController extends Controller
 {
-    use TraitInformation;
+    use TraitInformation, Upload;
     
     /**
      * Display a listing of the resource.
@@ -43,13 +44,18 @@ class InformationController extends Controller
         try {
             switch ($request->title) {
                 case 'angkatan-anggota' :
-                    $request->validate([
-                        'angkatan' => ['required'],
-                        'anggota' => ['required'],
-                    ]);
-
                     $this->saveInformation('angkatan', $request->angkatan);
                     $this->saveInformation('anggota', $request->anggota);
+                    $this->saveInformation('tentang', $request->tentang);
+                    
+                    $structureFile = $request->file('struktur');
+                    if ($structureFile->isValid()) {
+                        $oldFilename = Information::select('content')->whereTitle('struktur')->first();
+                        $filename = $this->resizeAndSave($structureFile, 400, 600, $oldFilename ? $oldFilename->content : null);
+                        $this->saveInformation('struktur', $filename);
+                    } else {
+                        dd(123);
+                    }
 
                     return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
@@ -58,11 +64,6 @@ class InformationController extends Controller
                 break;
 
                 case 'visi-misi' :
-                    $request->validate([
-                        'visi' => ['required'],
-                        'misi' => ['required'],
-                    ]);
-
                     $this->saveInformation('visi', $request->visi);
                     $this->saveInformation('misi', $request->misi);
 
@@ -85,12 +86,6 @@ class InformationController extends Controller
                 break;
                 
                 case 'kontak' :
-                    $request->validate([
-                        'whatsapp' => ['required'],
-                        'email' => ['required'],
-                        'location' => ['required']
-                    ]);
-
                     $this->saveInformation('whatsapp', $request->whatsapp);
                     $this->saveInformation('email', $request->email);
                     $this->saveInformation('location', $request->location);

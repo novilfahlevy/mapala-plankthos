@@ -184,7 +184,7 @@ div#preloader {
 }
 
 .area-padding {
-  padding: 110px 0px 80px;
+  padding: 80px 0px 80px;
 }
 
 .area-padding-2 {
@@ -269,7 +269,7 @@ div#preloader {
 }
 
 .header-bg {
-  background: url({{ asset('storage/img/background/page-header.jpg') }});
+  background: url({{ asset('storage/img/background/bg_kerang.jpg') }});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -813,7 +813,7 @@ div#preloader {
 
 .team-social-icon {
   left: 50%;
-  margin-left: -61px;
+  transform: translateX(-50%);
   opacity: 0;
   position: absolute;
   top: 30%;
@@ -981,7 +981,7 @@ div#preloader {
 .awesome-img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 250px;
   position: relative;
 }
 
@@ -1211,7 +1211,7 @@ div#preloader {
 --------------------------------------------------------------*/
 .testimonials {
   padding: 80px 0;
-  background: url({{ asset('storage/img/background/slider-bg.jpg') }}) no-repeat;
+  background: url({{ asset('storage/img/background/bg_kerang.jpg') }}) no-repeat;
   background-position: center center;
   background-size: cover;
   position: relative;
@@ -1589,6 +1589,7 @@ div#preloader {
   border: 1px solid #ccc;
   height: 42px;
   margin-bottom: 30px;
+  position: relative;
 }
 
 .search-option button {
@@ -1596,6 +1597,8 @@ div#preloader {
   border: medium none;
   font-size: 20px;
   padding: 8px 23px;
+  position: absolute;
+  right: 0;
 }
 
 .search-option button:hover {
@@ -1616,7 +1619,7 @@ div#preloader {
   background: #f9f9f9 none repeat scroll 0 0;
   margin-bottom: 30px;
   overflow: hidden;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 
 .left-blog li {
@@ -1633,7 +1636,6 @@ div#preloader {
 }
 
 .recent-single-post {
-  border-bottom: 1px solid #ddd;
   display: block;
   overflow: hidden;
   padding: 15px 10px;

@@ -55,7 +55,7 @@ class ActivityController extends Controller
             $activity->slug = Str::slug($request->title);
             $activity->content = $request->content;
     
-            $filename = $this->saveFile($request->file('thumbnail'));
+            $filename = $this->resizeAndSave($request->file('thumbnail'), 1920, 1080);
             if ($filename) {
                 $activity->thumbnail_url = $filename;
                 $activity->save();
@@ -93,7 +93,7 @@ class ActivityController extends Controller
     public function edit($id)
     {
         $activity = Activity::find($id);
-        $comments = $activity->comments()->orderBy('created_at')->paginate(10);
+        $comments = $activity->comments()->orderByDesc('created_at')->paginate(10);
         return view('backend.pages.activity.edit', compact('activity', 'comments'));
     }
 
@@ -120,7 +120,7 @@ class ActivityController extends Controller
 
             $thumbnail = $request->file('thumbnail');
             if ($thumbnail) {
-                $filename = $this->saveFile($thumbnail, $activity->thumbnail_url);
+                $filename = $this->resizeAndSave($thumbnail, 1920, 1080, $activity->thumbnail_url);
                 if ($filename) {
                     $activity->thumbnail_url = $filename;
                 }

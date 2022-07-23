@@ -7,13 +7,13 @@
 
     <x-alert />
 
-    {{-- Visi misi --}}
+    {{-- Organisasi --}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="mb-5 text-xl">Jumlah Angkatan dan Anggota</h2>
-                    <form action="{{ route('informasi.store') }}" method="POST">
+                    <form action="{{ route('informasi.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="title" value="angkatan-anggota">
                         <div class="grid grid-cols-2 gap-10 mb-10">
@@ -32,12 +32,52 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="mb-10">
+                            <input type="hidden" name="tentang" id="tentang" value="{{ $information['tentang'] }}">
+                            <p class="mb-5">Tentang Plankthos</p>
+                            <div id="tentangEditor"></div>
+                        </div>
+                        <div class="mb-10" x-data="structureOrganization()">
+                            <p class="mb-2">Struktur Organisasi</p>
+                            <label
+                              class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center w-[400px] h-[600px]"
+                              id="dropzone"
+                            >
+                              <input type="file" name="struktur" class="hidden" @change="generateBase64">
+                              <img :src="photoBase64 || photoUrl" class="w-full h-full !rounded-sm p-1" alt="struktur">
+                            </label>
+                            @error('struktur')
+                            <p class="text-red-800 mt-2">{{ $message }}</p>
+                            @enderror
+                        </div>
                         <button class="button" type="submit">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function structureOrganization() {
+            return {
+                photoUrl: `{{ isset($information['struktur']) ? asset('storage/uploads/'.$information['struktur']) : '' }}`,
+                photoBase64: null,
+                generateBase64(event) {
+                    const file = event.target.files
+                    if (file.length) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file[0]);
+                    reader.onload = () => {
+                        this.photoBase64 = reader.result;
+                    };
+                    reader.onerror = function (error) {
+                        console.log('Error: ', error);
+                    };
+                    }
+                }
+            }
+        }
+    </script>
 
     {{-- Visi misi --}}
     <div class="py-12">
@@ -48,9 +88,8 @@
                     <form action="{{ route('informasi.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="title" value="visi-misi">
-                        <input type="hidden" name="visi" id="visi" value="{{ $information['visi'] }}">
-                        <input type="hidden" name="misi" id="misi" value="{{ $information['misi'] }}">
                         <div class="mb-10">
+                            <input type="hidden" name="visi" id="visi" value="{{ $information['visi'] }}">
                             <label for="visi" class="mb-2 block">Visi</label>
                             <div id="visiEditor"></div>
                             @error('visi')
@@ -58,6 +97,7 @@
                             @enderror
                         </div>
                         <div class="mb-10">
+                            <input type="hidden" name="misi" id="misi" value="{{ $information['misi'] }}">
                             <label for="misi" class="mb-2 block">Misi</label>
                             <div id="misiEditor"></div>
                             @error('misi')
@@ -150,6 +190,15 @@
 @include('components.editor')
 
 <script>
+    initEditor('tentangEditor')
+    .then(editor => {
+        editor.setData(`{!! $information['tentang'] !!}`);
+        editor.editing.view.document.on('change', (evt, data) => {
+            document.getElementById('tentang').value = editor.getData();
+        });
+    })
+    .catch(error => console.log(error));
+
     initEditor('visiEditor')
     .then(editor => {
         editor.setData(`{!! $information['visi'] !!}`);
