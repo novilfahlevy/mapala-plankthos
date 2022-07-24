@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\LeaderHistoryController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\ActivityController;
 use App\Http\Controllers\Backend\ActivityCommentController;
+use App\Http\Controllers\Backend\DivisionController;
 use App\Http\Controllers\Backend\UserActionController;
 
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('/ketua-terdahulu', LeaderHistoryController::class);
     Route::resource('/ulasan', ReviewController::class);
     Route::resource('/galeri', GalleryController::class);
+    Route::resource('/divisi', DivisionController::class);
     Route::resource('/kegiatan', ActivityController::class, ['as' => 'admin']);
     Route::resource('/komentar-kegiatan', ActivityCommentController::class, ['as' => 'admin']);
     Route::get('/aktifitas', UserActionController::class)->name('aktifitas');

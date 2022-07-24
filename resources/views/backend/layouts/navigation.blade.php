@@ -87,6 +87,11 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('divisi.index')" :active="request()->routeIs('divisi.index')">
+                        {{ __('Divisi') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('informasi.index')" :active="request()->routeIs('informasi.index')">
                         {{ __('Informasi') }}
                     </x-nav-link>
