@@ -6,7 +6,7 @@
   <div class="container position-relative">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="slider-content text-center">
+        <div class="slider-content text-center py-0">
           <div class="header-bottom">
             <div class="layer2 mb-4">
               <h1 class="title2">Kegiatan</h1>
@@ -24,7 +24,7 @@
 
 @section('content')
 <!-- ======= Blog Page ======= -->
-<div class="blog-page area-padding">
+<div class="blog-page mt-10">
 <div class="container">
   <div class="row justify-content-center">
     <!-- End left sidebar -->

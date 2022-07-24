@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- ======= Blog Page ======= -->
-<div class="blog-page mt-32">
+<div class="blog-page mt-20 lg:mt-32">
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-4 bg-slate-50 min-h-auto mb-3 lg:mb-10 p-4">
