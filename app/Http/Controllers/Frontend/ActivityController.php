@@ -25,7 +25,7 @@ class ActivityController extends Controller
             $activities = Activity::paginate(10);
         }
 
-        return view('frontend.pages.blog', compact('activities'));
+        return view('frontend.pages.activity.index', compact('activities'));
     }
 
     public function search(Request $request)
@@ -64,7 +64,7 @@ class ActivityController extends Controller
     {
         $activity = Activity::whereSlug($slug)->firstOrFail();
         $recents = Activity::recents(5, $slug)->get();
-        return view('frontend.pages.blog-details', compact('activity', 'recents'));
+        return view('frontend.pages.activity.show', compact('activity', 'recents'));
     }
 
     /**

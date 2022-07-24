@@ -174,7 +174,7 @@
 </div>
 <!-- End Testimonials Section -->
 
-<!-- ======= Blog Section ======= -->
+<!-- ======= Kegiatan Section ======= -->
 <div id="kegiatan" class="blog-area mb-32">
   <div class="blog-inner">
     <div class="blog-overly"></div>
@@ -219,7 +219,7 @@
     </div>
   </div>
 </div>
-<!-- End Blog Section -->
+<!-- End Kegiatan Section -->
 
 <!-- ======= Ketua Section ======= -->
 <div id="ketua-terdahulu" class="our-team-area bg-slate-50 py-32 mb-32">

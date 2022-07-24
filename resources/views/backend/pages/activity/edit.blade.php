@@ -22,18 +22,37 @@
               >
                 @csrf
                 @method('PUT')
-                <div class="mb-5">
-                  <p class="mb-2">Thumbnail</p>
-                  <label
-                    class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[300px] w-[500px]"
-                    id="dropzone"
-                  >
-                    <input type="file" name="thumbnail" class="hidden" @change="generateBase64">
-                    <img :src="photoBase64 || photoUrl" class="w-full h-full !rounded-sm p-1" alt="thumbnail">
-                  </label>
-                  @error('thumbnail')
-                  <p class="text-red-800 mt-2">{{ $message }}</p>
-                  @enderror
+                <div class="grid grid-cols-1 lg:grid-cols-2 mb-5">
+                  <div class="mb-5 lg:mb-0">
+                    <p class="mb-2">Thumbnail</p>
+                    <label
+                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center min-h-[300px] w-[500px]"
+                      id="dropzone"
+                    >
+                      <input type="file" name="thumbnail" class="hidden" @change="generateThumbnailBase64">
+                      <img x-show="isThereAThumbnail()" :src="thumbnailBase64 || thumbnailUrl" class="w-full h-full !rounded-sm p-1" alt="thumbnail">
+                      <span x-show="!isThereAThumbnail()">Taruh foto disini</span>
+                    </label>
+                    @error('thumbnail')
+                    <p class="text-red-800 mt-2">{{ $message }}</p>
+                    @enderror
+                  </div>
+                  <div>
+                    <p class="mb-2">Foto</p>
+                    <label
+                      :class="`border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex ${areThereSomeFiles ? 'items-start justify-start' : 'items-center justify-center'} gap-2 p-2 h-[300px] w-[500px]`"
+                      id="dropzone"
+                    >
+                      <input type="file" name="photos[]" class="hidden" multiple @change="generatePhotoBase64">
+                      <template x-for="(photo, index) in (photoBase64.length ? photoBase64 : photoUrls)" :key="index">
+                        <img :src="photo" class="w-[100px] h-[100px] !rounded-sm" alt="photos">
+                      </template>
+                      <span x-show="!areThereSomeFiles()">Taruh foto disini</span>
+                    </label>
+                    @error('photos')
+                    <p class="text-red-800 mt-2">{{ $message }}</p>
+                    @enderror
+                  </div>
                 </div>
                 <div class="flex flex-col mb-5">
                   <label for="title" class="mb-2">Nama Kegiatan</label>
@@ -129,19 +148,43 @@
             })
             .catch(error => console.log(error));
           },
-          photoUrl: `{{ asset('storage/uploads/'.$activity->thumbnail_url) }}`,
-          photoBase64: null,
-          generateBase64(event) {
+          thumbnailUrl: `{{ asset('storage/uploads/'.$activity->thumbnail_url) }}`,
+          thumbnailBase64: null,
+          photoUrls: @json($activity->photos->map(fn($photo) => asset('storage/uploads/'.$photo->photo_url))),
+          photoBase64: [],
+          isThereAThumbnail() {
+            return this.thumbnailBase64 || this.thumbnailUrl;
+          },
+          areThereSomeFiles() {
+            return this.photoBase64.length || this.photoUrls.length;
+          },
+          generateThumbnailBase64(event) {
             const file = event.target.files
             if (file.length) {
               const reader = new FileReader();
               reader.readAsDataURL(file[0]);
               reader.onload = () => {
-                this.photoBase64 = reader.result;
+                this.thumbnailBase64 = reader.result;
               };
               reader.onerror = function (error) {
                 console.log('Error: ', error);
               };
+            }
+          },
+          generatePhotoBase64(event) {
+            this.photoBase64 = [];
+            const files = Array.from(event.target.files)
+            if (files.length) {
+              files.forEach(file => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                  this.photoBase64.push(reader.result);
+                };
+                reader.onerror = function (error) {
+                  console.log('Error: ', error);
+                };
+              });
             }
           }
         }

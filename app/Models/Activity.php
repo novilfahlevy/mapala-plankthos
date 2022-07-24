@@ -21,6 +21,11 @@ class Activity extends Model
         return $this->hasMany(ActivityComment::class, 'activity_id', 'id');
     }
 
+    public function photos()
+    {
+        return $this->hasMany(ActivityPhoto::class, 'activity_id', 'id');
+    }
+
     public function scopeSlug($query, $slug)
     {
         return $query->where('slug', 'LIKE', "%$slug%");

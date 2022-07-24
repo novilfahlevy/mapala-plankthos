@@ -60,6 +60,14 @@ class ActivityController extends Controller
                 $activity->thumbnail_url = $filename;
                 $activity->save();
             }
+
+            $photos = $request->file('photos');
+            if ($photos) {
+                foreach ($photos as $photo) {
+                    $photoName = $this->saveFile($photo);
+                    $activity->photos()->create(['photo_url' => $photoName]);
+                }
+            }
     
             return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,
@@ -127,6 +135,15 @@ class ActivityController extends Controller
             }
 
             $activity->save();
+
+            $photos = $request->file('photos');
+            if ($photos) {
+                $activity->photos()->delete();
+                foreach ($photos as $photo) {
+                    $photoName = $this->saveFile($photo);
+                    $activity->photos()->create(['photo_url' => $photoName]);
+                }
+            }
             
             return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,

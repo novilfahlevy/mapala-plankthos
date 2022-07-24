@@ -55,6 +55,17 @@
                   <span><i class="bi bi-clock"></i> {{ $activity->created_at->format('d F Y, H:m') }}</span>
                 </div>
                 <div class="entry-content">
+                  <div class="flex items-center gap-3 mb-10">
+                    @foreach ($activity->photos as $photo)
+                    <img
+                      src="{{ asset('storage/uploads/'.$photo->photo_url) }}"
+                      class="portfolio-lightbox cursor-pointer hover:opacity-80 w-[100px] h-[100px]"
+                      data-gallery="myGallery"
+                      width="100"
+                      height="100"
+                    >
+                    @endforeach
+                  </div>
                   {!! $activity->content !!}
                 </div>
               </div>
