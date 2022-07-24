@@ -12,7 +12,7 @@
           <div class="bg-white shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
               <div class="mb-10">
-                <a href="{{ route('divisi.create') }}" class="button">+ Tambah Divisi</a>
+                <a href="{{ route('admin.divisi.create') }}" class="button">+ Tambah Divisi</a>
               </div>
               <table class="border-collapse table-fixed w-full text-sm mb-5">
                 <thead>
@@ -52,11 +52,11 @@
                         </x-slot>
                         
                         <x-slot name="content">
-                          <x-dropdown-link :href="route('divisi.edit', $division->id)">
+                          <x-dropdown-link :href="route('admin.divisi.edit', $division->id)">
                             {{ __('Edit') }}
                           </x-dropdown-link>
                           <form
-                            action="{{ route('divisi.destroy', $division->id) }}"
+                            action="{{ route('admin.divisi.destroy', $division->id) }}"
                             method="POST"
                           >
                             @csrf

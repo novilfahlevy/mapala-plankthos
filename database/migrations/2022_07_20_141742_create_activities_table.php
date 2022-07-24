@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('title');
             $table->text('slug');
             $table->longText('content');
+            $table->timestamp('tanggal');
+            $table->foreignId('division_id')->nullable()->constrained('divisions')->nullOnDelete();
             $table->string('thumbnail_url', 50);
             $table->timestamps();
         });

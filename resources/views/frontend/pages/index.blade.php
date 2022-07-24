@@ -198,10 +198,13 @@
             </div>
             <a
               href="{{ route('kegiatan.show', $activity->slug) }}"
-              class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:!opacity-100 cursor-pointer flex flex-col items-center justify-center"
+              class="absolute inset-0 bg-black bg-opacity-50 cursor-pointer flex flex-col items-center justify-center"
             >
-              <h5 class="text-white">{{ strlen($activity->title) > 20 ? substr($activity->title, 0, 20).'...' : $activity->title }}</h5>
-              <p class="text-white">{{ $activity->comments()->count() }} comments</p>
+              <h5 class="text-white">{{ strlen($activity->title) > 30 ? substr($activity->title, 0, 30).'...' : $activity->title }}</h5>
+              <p class="text-white flex flex-col items-center gap-1">
+                <span><i class="bi bi-calendar mr-2"></i> {{ $activity->tanggal->format('d F Y') }}</span>
+                <span><i class="bi bi-people mr-2"></i> {{ $activity->division ? $activity->division->name : 'Umum' }}</span>
+              </p>
             </a>
           </div>
           <!-- Start single blog -->
@@ -239,7 +242,7 @@
             <a href="#">
               <img src="{{ asset('storage/uploads/'.$leader->photo_url) }}" alt="{{ $leader->name }}">
             </a>
-            <div class="team-social-icon">
+            <div class="team-social-icon flex flex-col items-center">
               <h4 class="text-white">{{ $leader->name }}</h4>
               @if ($leader->nim)
               <p class="text-light">({{ $leader->nim }})</p>

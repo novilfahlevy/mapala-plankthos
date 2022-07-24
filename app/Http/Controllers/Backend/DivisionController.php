@@ -7,6 +7,7 @@ use App\Models\Division;
 use App\Trait\UserAction;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DivisionController extends Controller
 {
@@ -49,17 +50,18 @@ class DivisionController extends Controller
         try {
             $division = new Division();
             $division->name = $request->name;
+            $division->slug = Str::slug($request->name);
             $division->description = $request->description;
             $division->save();
 
             $this->logAction('Membuat divisi "'.$request->name.'"');
 
-            return redirect()->route('divisi.index')->with('alert', [
+            return redirect()->route('admin.divisi.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Divisi berhasil ditambahkan.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('divisi.index')->with('alert', [
+            return redirect()->route('admin.divisi.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);
@@ -106,18 +108,19 @@ class DivisionController extends Controller
         try {
             $division = Division::findOrFail($id);
             $division->name = $request->name;
+            $division->slug = Str::slug($request->name);
             $division->description = $request->description;
 
             $division->save();
 
             $this->logAction('Mengedit divisi "'.$request->name.'"');
 
-            return redirect()->route('divisi.index')->with('alert', [
+            return redirect()->route('admin.divisi.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Divisi berhasil diedit.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('divisi.index')->with('alert', [
+            return redirect()->route('admin.divisi.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);
@@ -140,12 +143,12 @@ class DivisionController extends Controller
 
             $this->logAction('Menghapus divisi "'.$name.'"');
 
-            return redirect()->route('divisi.index')->with('alert', [
+            return redirect()->route('admin.divisi.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Divisi berhasil dihapus.'
             ]);
         } catch (Exception $error) {
-            return redirect()->route('divisi.index')->with('alert', [
+            return redirect()->route('admin.divisi.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
             ]);

@@ -44,7 +44,7 @@
 
   @yield('header')
 
-  <main id="main">
+  <main id="main" class="min-h-screen">
 
     @yield('content')
 

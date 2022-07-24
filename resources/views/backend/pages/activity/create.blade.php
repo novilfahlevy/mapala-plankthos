@@ -23,7 +23,7 @@
                   <div>
                     <p class="mb-2">Thumbnail</p>
                     <label
-                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center min-h-[300px] w-[500px]"
+                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[300px] w-[500px]"
                       id="dropzone"
                     >
                       <input type="file" name="thumbnail" class="hidden" @change="generateThumbnailBase64">
@@ -54,6 +54,25 @@
                 <div class="flex flex-col mb-5">
                   <label for="title" class="mb-2">Nama Kegiatan</label>
                   <x-input type="text" name="title" id="title" required />
+                  @error('title')
+                  <p class="text-red-800 mt-2">{{ $message }}</p>
+                  @enderror
+                </div>
+                <div class="flex flex-col mb-5">
+                  <label for="tanggal" class="mb-2">Tanggal kegiatan</label>
+                  <x-input type="date" name="tanggal" id="tanggal" required />
+                  @error('tanggal')
+                  <p class="text-red-800 mt-2">{{ $message }}</p>
+                  @enderror
+                </div>
+                <div class="flex flex-col mb-5">
+                  <label for="title" class="mb-2">Divisi</label>
+                  <select name="divisionId" id="divisionId">
+                    <option value="">Umum (tidak terkait divisi manapun)</option>
+                    @foreach ($divisions as $division)
+                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                    @endforeach
+                  </select>
                   @error('title')
                   <p class="text-red-800 mt-2">{{ $message }}</p>
                   @enderror

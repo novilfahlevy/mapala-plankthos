@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ActivityController as FrontendActivityController;
-use App\Http\Controllers\Frontend\ActivityCommentController as FrontendActivityCommentController;
+// use App\Http\Controllers\Frontend\ActivityCommentController as FrontendActivityCommentController;
+use App\Http\Controllers\Frontend\DivisionController as FrontendDivisionController;
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GalleryController;
@@ -14,7 +15,6 @@ use App\Http\Controllers\Backend\ActivityController;
 use App\Http\Controllers\Backend\ActivityCommentController;
 use App\Http\Controllers\Backend\DivisionController;
 use App\Http\Controllers\Backend\UserActionController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +30,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', HomeController::class)->only(['index', 'store']);
 Route::resource('/kegiatan', FrontendActivityController::class);
+Route::resource('/divisi', FrontendDivisionController::class);
 Route::get('/cari-kegiatan', 'App\Http\Controllers\Frontend\ActivityController@search')->name('cari-kegiatan');
-Route::resource('/komentar-kegiatan', FrontendActivityCommentController::class);
+// Route::resource('/komentar-kegiatan', FrontendActivityCommentController::class);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
@@ -40,9 +41,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('/ketua-terdahulu', LeaderHistoryController::class);
     Route::resource('/ulasan', ReviewController::class);
     Route::resource('/galeri', GalleryController::class);
-    Route::resource('/divisi', DivisionController::class);
+    Route::resource('/divisi', DivisionController::class, ['as' => 'admin']);
     Route::resource('/kegiatan', ActivityController::class, ['as' => 'admin']);
-    Route::resource('/komentar-kegiatan', ActivityCommentController::class, ['as' => 'admin']);
+    // Route::resource('/komentar-kegiatan', ActivityCommentController::class, ['as' => 'admin']);
     Route::get('/aktifitas', UserActionController::class)->name('aktifitas');
 });
 

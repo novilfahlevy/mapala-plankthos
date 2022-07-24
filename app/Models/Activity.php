@@ -9,22 +9,33 @@ class Activity extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'slug', 'content', 'thumbnail_url'];
+    protected $fillable = ['user_id', 'thumbnail_url', 'title', 'slug', 'content', 'tanggal', 'division_id'];
+
+    protected $dates = ['tanggal'];
+    
+    // Relations
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function comments()
+    // public function comments()
+    // {
+    //     return $this->hasMany(ActivityComment::class, 'activity_id', 'id');
+    // }
+
+    public function division()
     {
-        return $this->hasMany(ActivityComment::class, 'activity_id', 'id');
+        return $this->belongsTo(Division::class, 'division_id', 'id');
     }
 
     public function photos()
     {
         return $this->hasMany(ActivityPhoto::class, 'activity_id', 'id');
     }
+
+    // Scopes
 
     public function scopeSlug($query, $slug)
     {

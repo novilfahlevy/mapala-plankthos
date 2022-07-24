@@ -5,73 +5,39 @@
 <div class="blog-page mt-32">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-4 order-2 lg:!order-1">
-        <div class="page-head-blog">
-          <div class="single-blog-page">
-            <!-- recent start -->
-            <div class="left-blog">
-              <h4>Kegiatan terbaru</h4>
-              <div class="recent-post">
-                @forelse ($recents as $recent)
-                <!-- start single post -->
-                <div class="recent-single-post {{ $loop->index < $recents->count() - 1   ? 'border-b' : '' }}">
-                  <div class="post-img">
-                    <a href="{{ route('kegiatan.show', $recent->slug) }}">
-                      <img src="{{ asset('storage/uploads/'.$recent->thumbnail_url) }}" alt="{{ $recent->title }}">
-                    </a>
-                  </div>
-                  <div class="pst-content break-words">
-                    <h5 class="leading-8">
-                      <a href="{{ route('kegiatan.show', $recent->slug) }}">
-                        {{ strlen($recent->title) > 35 ? substr($recent->title, 0, 35).'...' : $recent->title }}
-                      </a>
-                    </h5>
-                  </div>
-                </div>
-                <!-- End single post -->
-                @empty
-                <p class="text-center mt-4">Belum ada kegiatan</p>
-                @endforelse
-              </div>
-            </div>
-            <!-- recent end -->
-          </div>
+      <div class="col-12 col-lg-4 bg-slate-50 min-h-auto mb-3 lg:mb-10 p-4">
+        <img src="{{ asset('storage/uploads/'.$activity->thumbnail_url) }}" class="mb-3" alt="{{ $activity->title }}" />
+        <div class="flex items-center gap-3">
+          @foreach ($activity->photos as $photo)
+          <img
+            src="{{ asset('storage/uploads/'.$photo->photo_url) }}"
+            class="portfolio-lightbox cursor-pointer hover:opacity-80 w-[100px] h-[100px]"
+            data-gallery="myGallery"
+            width="100"
+            height="100"
+          >
+          @endforeach
         </div>
       </div>
-      <!-- End left sidebar -->
       <!-- Start single blog -->
-      <div class="col-12 col-lg-8 order-1 lg:!order-2">
+      <div class="col-12 col-lg-8 lg:pl-10">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <!-- single-blog start -->
             <article class="blog-post-wrapper">
-              <div class="post-thumbnail">
-                <img src="{{ asset('storage/uploads/'.$activity->thumbnail_url) }}" alt="{{ $activity->title }}" />
-              </div>
-              <div class="post-information">
+              <div class="post-information pt-0">
                 <h2>{{ $activity->title }}</h2>
                 <div class="entry-meta">
-                  <span class="author-meta"><i class="bi bi-person"></i> <a href="#">{{ $activity->user->name }}</a></span>
-                  <span><i class="bi bi-clock"></i> {{ $activity->created_at->format('d F Y, H:m') }}</span>
+                  <span class="author-meta"><i class="bi bi-people"></i> <a href="#">Divisi Mangrove</a></span>
+                  <span><i class="bi bi-calendar"></i> {{ $activity->created_at->format('d F Y') }}</span>
                 </div>
                 <div class="entry-content">
-                  <div class="flex items-center gap-3 mb-10">
-                    @foreach ($activity->photos as $photo)
-                    <img
-                      src="{{ asset('storage/uploads/'.$photo->photo_url) }}"
-                      class="portfolio-lightbox cursor-pointer hover:opacity-80 w-[100px] h-[100px]"
-                      data-gallery="myGallery"
-                      width="100"
-                      height="100"
-                    >
-                    @endforeach
-                  </div>
                   {!! $activity->content !!}
                 </div>
               </div>
             </article>
             <div class="clear"></div>
-            <div class="single-post-comments">
+            {{-- <div class="single-post-comments">
               <div class="comments-area">
                 <div class="comments-heading">
                   <h3>{{ $activity->comments()->count() }} komentar</h3>
@@ -131,7 +97,7 @@
                   </div>
                 </form>
               </div>
-            </div>
+            </div> --}}
             <!-- single-blog end -->
           </div>
         </div>

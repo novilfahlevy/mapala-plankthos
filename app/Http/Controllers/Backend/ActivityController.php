@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\Division;
 use App\Trait\Upload;
 use App\Trait\UserAction;
 use Exception;
@@ -32,7 +33,8 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.activity.create');
+        $divisions = Division::all();
+        return view('backend.pages.activity.create', compact('divisions'));
     }
 
     /**
@@ -46,7 +48,7 @@ class ActivityController extends Controller
         $request->validate([
             'title' => ['required', 'unique:activities'],
             'content' => ['required'],
-            'thumbnail' => ['required', 'file', 'max:5000'],
+            // 'thumbnail' => ['required', 'file', 'max:5000'],
         ]);
 
         try {
@@ -55,6 +57,8 @@ class ActivityController extends Controller
             $activity->title = $request->title;
             $activity->slug = Str::slug($request->title);
             $activity->content = $request->content;
+            $activity->tanggal = $request->tanggal;
+            $activity->division_id = $request->divisionId ? $request->divisionId : null;
     
             $filename = $this->resizeAndSave($request->file('thumbnail'), 1920, 1080);
             if ($filename) {
@@ -103,9 +107,14 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
+        $divisions = Division::all();
         $activity = Activity::find($id);
-        $comments = $activity->comments()->orderByDesc('created_at')->paginate(10);
-        return view('backend.pages.activity.edit', compact('activity', 'comments'));
+        // $comments = $activity->comments()->orderByDesc('created_at')->paginate(10);
+        return view('backend.pages.activity.edit', compact(
+            'activity',
+            'divisions',
+            // 'comments'
+        ));
     }
 
     /**
@@ -120,7 +129,7 @@ class ActivityController extends Controller
         $request->validate([
             'title' => ['required'],
             'content' => ['required'],
-            'thumbnail' => ['file', 'max:5000'],
+            // 'thumbnail' => ['file', 'max:5000'],
         ]);
         
         try {
@@ -128,6 +137,8 @@ class ActivityController extends Controller
             $activity->title = $request->title;
             $activity->slug = Str::slug($request->title);
             $activity->content = $request->content;
+            $activity->tanggal = $request->tanggal;
+            $activity->division_id = $request->divisionId ? $request->divisionId : null;
 
             $thumbnail = $request->file('thumbnail');
             if ($thumbnail) {

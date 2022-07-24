@@ -26,7 +26,7 @@
                   <div class="mb-5 lg:mb-0">
                     <p class="mb-2">Thumbnail</p>
                     <label
-                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center min-h-[300px] w-[500px]"
+                      class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center h-[300px] w-[500px]"
                       id="dropzone"
                     >
                       <input type="file" name="thumbnail" class="hidden" @change="generateThumbnailBase64">
@@ -62,6 +62,25 @@
                   @enderror
                 </div>
                 <div class="flex flex-col mb-5">
+                  <label for="tanggal" class="mb-2">Tanggal kegiatan</label>
+                  <x-input type="date" name="tanggal" id="tanggal" value="{{ $activity->tanggal->format('Y-m-d') }}" required />
+                  @error('tanggal')
+                  <p class="text-red-800 mt-2">{{ $message }}</p>
+                  @enderror
+                </div>
+                <div class="flex flex-col mb-5">
+                  <label for="title" class="mb-2">Divisi</label>
+                  <select name="divisionId" id="divisionId">
+                    <option value="">Umum (tidak terkait divisi manapun)</option>
+                    @foreach ($divisions as $division)
+                    <option value="{{ $division->id }}" {{ $division->id === $activity->division_id ? 'selected' : '' }}>{{ $division->name }}</option>
+                    @endforeach
+                  </select>
+                  @error('title')
+                  <p class="text-red-800 mt-2">{{ $message }}</p>
+                  @enderror
+                </div>
+                <div class="flex flex-col mb-5">
                   <label for="content" class="mb-2">Konten</label>
                   <input type="hidden" name="content" value="{{ $activity->content }}" id="content">
                   <div id="contentEditor"></div>
@@ -76,11 +95,10 @@
       </div>
   </div>
 
-  <div class="pb-12">
+  {{-- <div class="pb-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
-              {{-- Komentar --}}
               <ul class="mb-10">
                 @foreach ($comments as $comment)
                 <li class="flex flex-col py-3 px-5 rounded-sm bg-slate-100 mb-2">
@@ -112,7 +130,6 @@
 
               {{ $comments->links() }}
 
-              {{-- Form Komentar --}}
               <form
                 class="border-t pt-8 mt-8"
                 action="{{ route('admin.komentar-kegiatan.store') }}"
@@ -132,7 +149,7 @@
             </div>
           </div>
       </div>
-  </div>
+  </div> --}}
 
   <x-slot name="scripts">
     <script>

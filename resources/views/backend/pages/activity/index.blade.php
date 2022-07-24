@@ -27,7 +27,10 @@
                       Nama Kegiatan
                     </th>
                     <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
-                      Dibuat oleh
+                      Divisi
+                    </th>
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                      Tanggal kegiatan
                     </th>
                     <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
                       Tanggal dibuat
@@ -50,7 +53,10 @@
                       {{ $activity->title }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
-                      {{ $activity->user->name }}
+                      {{ $activity->division ? $activity->division->name : 'Umum' }}
+                    </td>
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                      {{ $activity->tanggal->format('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
                       {{ $activity->created_at->format('d F Y') }}

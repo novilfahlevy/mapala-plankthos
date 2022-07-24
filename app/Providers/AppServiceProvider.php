@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Division;
 use App\Trait\Information;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
@@ -36,6 +37,13 @@ class AppServiceProvider extends ServiceProvider
             function($view) {
                 $information = $this->getAllInformations();
                 $view->with('information', $information);
+            }
+        );
+        View::composer(
+            'frontend.layouts.header',
+            function($view) {
+                $divisions = Division::all();
+                $view->with('divisions', $divisions);
             }
         );
     }

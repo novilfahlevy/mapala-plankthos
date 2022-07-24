@@ -10,4 +10,9 @@ class Division extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description'];
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'division_id', 'id');
+    }
 }

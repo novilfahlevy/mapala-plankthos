@@ -10,9 +10,9 @@
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
               <div class="mb-10">
-                <a href="{{ route('divisi.index') }}" class="button">Kembali</a>
+                <a href="{{ route('admin.divisi.index') }}" class="button">Kembali</a>
               </div>
-              <form action="{{ route('divisi.update', $division['id']) }}" method="POST">
+              <form action="{{ route('admin.divisi.update', $division['id']) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="flex flex-col mb-10">
