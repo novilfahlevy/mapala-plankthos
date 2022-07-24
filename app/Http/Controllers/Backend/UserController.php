@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Trait\UserAction;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    use UserAction;
+
     /**
      * Display a listing of the resource.
      *
@@ -51,6 +54,8 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();
+
+            $this->logAction('Membuat akun pengguna "'.$request->name.'"');
 
             return redirect()->route('pengguna.index')->with('alert', [
                 'status' => 200,
@@ -133,7 +138,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
-            User::destroy($id);
+            $user = User::find($id);
+            $name = $user->name;
+
+            $user->delete();
+
+            $this->logAction('Menghapus akun pengguna "'.$name.'"');
+
             return redirect()->route('pengguna.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Pengguna berhasil dihapus.'

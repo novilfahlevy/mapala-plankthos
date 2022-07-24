@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\LeaderHistory;
 use App\Trait\Upload;
+use App\Trait\UserAction;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class LeaderHistoryController extends Controller
 {
-    use Upload;
+    use Upload, UserAction;
 
     /**
      * Display a listing of the resource.
@@ -62,6 +63,8 @@ class LeaderHistoryController extends Controller
                 $leader->photo_url = $filename;
                 $leader->save();
             }
+
+            $this->logAction('Membuat daftar ketua terdahulu "'.$request->name.'"');
     
             return redirect()->route('ketua-terdahulu.index')->with('alert', [
                 'status' => 200,
@@ -130,6 +133,8 @@ class LeaderHistoryController extends Controller
             }
 
             $leader->save();
+
+            $this->logAction('Mengedit daftar ketua terdahulu "'.$request->name.'"');
             
             return redirect()->route('ketua-terdahulu.index')->with('alert', [
                 'status' => 200,
@@ -153,8 +158,13 @@ class LeaderHistoryController extends Controller
     {
         try {
             $leader = LeaderHistory::find($id);
+            $name = $leader->name;
+
             $this->deleteFile($leader->photo_url);
             $leader->delete();
+
+            $this->logAction('Menghapus daftar ketua terdahulu "'.$name.'"');
+
             return redirect()->route('ketua-terdahulu.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Ketua berhasil dihapus.'

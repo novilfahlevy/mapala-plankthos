@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Trait\Upload;
+use App\Trait\UserAction;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ActivityController extends Controller
 {
-    use Upload;
+    use Upload, UserAction;
 
     /**
      * Display a listing of the resource.
@@ -68,6 +69,8 @@ class ActivityController extends Controller
                     $activity->photos()->create(['photo_url' => $photoName]);
                 }
             }
+
+            $this->logAction('Membuat kegiatan "'.$request->title.'"');
     
             return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,
@@ -144,6 +147,8 @@ class ActivityController extends Controller
                     $activity->photos()->create(['photo_url' => $photoName]);
                 }
             }
+
+            $this->logAction('Mengedit kegiatan "'.$request->title.'"');
             
             return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,
@@ -167,8 +172,13 @@ class ActivityController extends Controller
     {
         try {
             $activity = Activity::find($id);
+            $title = $activity->title;
+
             $this->deleteFile($activity->thumbnail_url);
             $activity->delete();
+
+            $this->logAction('Menghapus kegiatan "'.$title.'"');
+
             return redirect()->route('admin.kegiatan.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Kegiatan berhasil dihapus.'

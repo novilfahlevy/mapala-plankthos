@@ -58,9 +58,11 @@
                         </x-slot>
                         
                         <x-slot name="content">
+                          @if ($user->id == auth()->user()->id)
                           <x-dropdown-link :href="route('pengguna.edit', $user->id)">
                             {{ __('Edit') }}
                           </x-dropdown-link>
+                          @endif
                           @if ($user->id != auth()->user()->id)
                           <form
                             action="{{ route('pengguna.destroy', $user->id) }}"

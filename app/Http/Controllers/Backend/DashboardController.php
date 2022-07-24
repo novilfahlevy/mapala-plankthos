@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        $visitors = Visitor::paginate(10);
+        $visitors = Visitor::orderByDesc('created_at')->paginate(10);
         return view('backend.pages.dashboard', compact('visitors'));
     }
 }

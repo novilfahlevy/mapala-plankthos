@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Information;
 use App\Trait\Information as TraitInformation;
 use App\Trait\Upload;
+use App\Trait\UserAction;
 use Exception;
 use Illuminate\Http\Request;
 
 class InformationController extends Controller
 {
-    use TraitInformation, Upload;
+    use TraitInformation, Upload, UserAction;
     
     /**
      * Display a listing of the resource.
@@ -48,11 +49,15 @@ class InformationController extends Controller
                     $this->saveInformation('anggota', $request->anggota);
                     $this->saveInformation('tentang', $request->tentang);
                     
-                    $structureFile = $request->file('struktur');
-                    $oldFilename = Information::select('content')->whereTitle('struktur')->first();
-                    $filename = $this->resizeAndSave($structureFile, 400, 600, $oldFilename ? $oldFilename->content : null);
-                    $this->saveInformation('struktur', $filename);
+                    if ($request->file('struktur')) {
+                        $structureFile = $request->file('struktur');
+                        $oldFilename = Information::select('content')->whereTitle('struktur')->first();
+                        $filename = $this->resizeAndSave($structureFile, 400, 600, $oldFilename ? $oldFilename->content : null);
+                        $this->saveInformation('struktur', $filename);
+                    }
 
+                    $this->logAction('Mengedit informasi tentang organisasi.');
+                    
                     return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Organisasi berhasil diedit.'
@@ -63,6 +68,8 @@ class InformationController extends Controller
                     $this->saveInformation('visi', $request->visi);
                     $this->saveInformation('misi', $request->misi);
 
+                    $this->logAction('Mengedit informasi tentang visi dan misi.');
+                    
                     return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Visi dan Misi berhasil diedit.'
@@ -75,6 +82,8 @@ class InformationController extends Controller
                     $this->saveInformation('youtube', $request->youtube);
                     $this->saveInformation('twitter', $request->twitter);
 
+                    $this->logAction('Mengedit informasi tentang media sosial.');
+                    
                     return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,
                         'message' => 'Media sosial berhasil diedit.'
@@ -85,6 +94,8 @@ class InformationController extends Controller
                     $this->saveInformation('whatsapp', $request->whatsapp);
                     $this->saveInformation('email', $request->email);
                     $this->saveInformation('location', $request->location);
+
+                    $this->logAction('Mengedit informasi tentang kontak.');
 
                     return redirect()->route('informasi.index')->with('alert', [
                         'status' => 200,

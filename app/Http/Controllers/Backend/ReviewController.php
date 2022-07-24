@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use App\Trait\Upload;
+use App\Trait\UserAction;
 use Exception;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    use Upload;
+    use Upload, UserAction;
 
     /**
      * Display a listing of the resource.
@@ -59,6 +60,8 @@ class ReviewController extends Controller
                 $review->photo_url = $filename;
                 $review->save();
             }
+
+            $this->logAction('Memasukkan ulasan dari "'.$request->name.'"');
     
             return redirect()->route('ulasan.index')->with('alert', [
                 'status' => 200,
@@ -125,6 +128,8 @@ class ReviewController extends Controller
             }
 
             $review->save();
+
+            $this->logAction('Memasukkan ulasan dari "'.$request->name.'"');
             
             return redirect()->route('ulasan.index')->with('alert', [
                 'status' => 200,
@@ -148,8 +153,13 @@ class ReviewController extends Controller
     {
         try {
             $review = Review::find($id);
+            $name = $review->name;
+
             $this->deleteFile($review->photo_url);
             $review->delete();
+
+            $this->logAction('Menghapus ulasan dari "'.$name.'"');
+
             return redirect()->route('ulasan.index')->with('alert', [
                 'status' => 200,
                 'message' => 'Ulasan berhasil dihapus.'
