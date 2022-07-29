@@ -30,6 +30,7 @@
                       <img x-show="thumbnailBase64" :src="thumbnailBase64" class="w-full h-full !rounded-sm p-1" alt="thumbnail">
                       <span x-show="!thumbnailBase64">Taruh foto disini</span>
                     </label>
+                    <p class="text-red-800 mt-2" x-show="thumbnailErrorMessage" x-text="thumbnailErrorMessage"></p>
                     @error('thumbnail')
                     <p class="text-red-800 mt-2">{{ $message }}</p>
                     @enderror
@@ -46,6 +47,7 @@
                       </template>
                       <span x-show="!photoBase64.length">Taruh foto disini</span>
                     </label>
+                    <p class="text-red-800 mt-2" x-show="photoErrorMessage" x-text="photoErrorMessage"></p>
                     @error('photos')
                     <p class="text-red-800 mt-2">{{ $message }}</p>
                     @enderror
@@ -93,6 +95,7 @@
   </div>
 
   <x-slot name="scripts">
+    @include('components.editor')
     <script>
       function createActivity() {
         return {
@@ -106,15 +109,23 @@
             .catch(error => console.log(error));
           },
           photoBase64: [],
+          photoErrorMessage: [],
           thumbnailBase64: null,
+          thumbnailErrorMessage: '',
           generateThumbnailBase64(event) {
             const file = event.target.files
+            this.thumbnailErrorMessage = '';
             if (file.length) {
               const reader = new FileReader();
               reader.readAsDataURL(file[0]);
               reader.onload = () => {
-                this.thumbnailBase64 = reader.result;
+                if (checkFiletype(file[0].name)) {
+                  this.thumbnailBase64 = reader.result;
+                } else {
+                  this.thumbnailErrorMessage = `Masukkan gambar atau foto`;
+                }
               };
+
               reader.onerror = function (error) {
                 console.log('Error: ', error);
               };
@@ -122,18 +133,23 @@
           },
           generatePhotoBase64(event) {
             this.photoBase64 = [];
+            this.photoErrorMessage = '';
             const files = Array.from(event.target.files)
             if (files.length) {
-              files.forEach(file => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                  this.photoBase64.push(reader.result);
-                };
-                reader.onerror = function (error) {
-                  console.log('Error: ', error);
-                };
-              });
+              if (checkFiletype(files.map(file => file.name))) {
+                files.forEach(file => {
+                  const reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onload = () => {
+                    this.photoBase64.push(reader.result);
+                  };
+                  reader.onerror = function (error) {
+                    console.log('Error: ', error);
+                  };
+                });
+              } else {
+                this.photoErrorMessage = `Masukkan gambar atau foto`;
+              }
             }
           }
         }
@@ -141,5 +157,3 @@
     </script>
   </x-slot>
 </x-app-layout>
-
-@include('components.editor')

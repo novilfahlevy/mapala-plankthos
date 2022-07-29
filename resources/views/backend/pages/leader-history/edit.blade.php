@@ -30,6 +30,7 @@
                       <img x-show="photoBase64" :src="photoBase64" class="!w-full !h-full !rounded-sm p-1" alt="photo">
                       <img x-show="!photoBase64" :src="photoUrl" class="!w-full !h-full !rounded-sm p-1" alt="photo">
                     </label>
+                    <p class="text-red-800 mt-2" x-show="photoErrorMessage" x-text="photoErrorMessage"></p>
                     @error('photo')
                     <p class="text-red-800">{{ $message }}</p>
                     @enderror
@@ -80,13 +81,19 @@
         return {
           photoUrl: `{{ asset('storage/uploads/'.$leader->photo_url) }}`,
           photoBase64: null,
+          photoErrorMessage: '',
           generateBase64(event) {
             const file = event.target.files
             if (file.length) {
               const reader = new FileReader();
               reader.readAsDataURL(file[0]);
               reader.onload = () => {
-                this.photoBase64 = reader.result;
+                if (checkFiletype(file[0].name)) {
+                  this.photoBase64 = reader.result;
+                } else {
+                  event.target.value = null;
+                  this.photoErrorMessage = `Masukkan gambar atau foto`;
+                }
               };
               reader.onerror = function (error) {
                 console.log('Error: ', error);

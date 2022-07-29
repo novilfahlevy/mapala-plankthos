@@ -43,9 +43,11 @@
                               class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center w-[400px] h-[600px]"
                               id="dropzone"
                             >
-                              <input type="file" name="struktur" class="hidden" @change="generateBase64">
-                              <img :src="photoBase64 || photoUrl" class="w-full h-full !rounded-sm p-1" alt="struktur">
+                                <input type="file" name="struktur" class="hidden" @change="generateBase64">
+                                <img x-show="getPhoto()" :src="getPhoto()" class="w-full h-full !rounded-sm p-1" alt="struktur">
+                                <p x-show="!getPhoto()">Taruh foto disini</p>
                             </label>
+                            <p class="text-red-800 mt-2" x-show="photoErrorMessage" x-text="photoErrorMessage" />
                             @error('struktur')
                             <p class="text-red-800 mt-2">{{ $message }}</p>
                             @enderror
@@ -56,28 +58,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function structureOrganization() {
-            return {
-                photoUrl: `{{ isset($information['struktur']) ? asset('storage/uploads/'.$information['struktur']) : '' }}`,
-                photoBase64: null,
-                generateBase64(event) {
-                    const file = event.target.files
-                    if (file.length) {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file[0]);
-                    reader.onload = () => {
-                        this.photoBase64 = reader.result;
-                    };
-                    reader.onerror = function (error) {
-                        console.log('Error: ', error);
-                    };
-                    }
-                }
-            }
-        }
-    </script>
 
     {{-- Visi misi --}}
     <div class="pb-12">
@@ -185,35 +165,70 @@
             </div>
         </div>
     </div>
+
+    <x-slot name="scripts">
+        @include('components.editor')
+        <script>
+            function structureOrganization() {
+                return {
+                    photoUrl: `{{ isset($information['struktur']) && $information['struktur'] ? asset('storage/uploads/'.$information['struktur']) : '' }}`,
+                    photoBase64: null,
+                    photoErrorMessage: '',
+                    getPhoto() {
+                        if (this.photoUrl) {
+                            return this.photoUrl;
+                        }
+                        return this.photoBase64;
+                    },
+                    generateBase64(event) {
+                        const file = event.target.files;
+                        if (file.length) {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(file[0]);
+                            reader.onload = () => {
+                                this.photoErrorMessage = '';
+        
+                                if (checkFiletype(file[0].name)) {
+                                    this.photoBase64 = reader.result;
+                                } else {
+                                    this.photoErrorMessage = `Masukkan gambar atau foto`;
+                                }
+                            };
+                            reader.onerror = function (error) {
+                                console.log('Error: ', error);
+                            };
+                        }
+                    }
+                }
+            }
+            
+            initEditor('tentangEditor')
+            .then(editor => {
+                editor.setData(`{!! $information['tentang'] !!}`);
+                editor.editing.view.document.on('change', (evt, data) => {
+                    document.getElementById('tentang').value = editor.getData();
+                });
+            })
+            .catch(error => console.log(error));
+        
+            initEditor('visiEditor')
+            .then(editor => {
+                editor.setData(`{!! $information['visi'] !!}`);
+                editor.editing.view.document.on('change', (evt, data) => {
+                    document.getElementById('visi').value = editor.getData();
+                });
+            })
+            .catch(error => console.log(error));
+            
+            initEditor('misiEditor', 'misi')
+            .then(editor => {
+                editor.setData(`{!! $information['misi'] !!}`);
+                editor.editing.view.document.on('change', (evt, data) => {
+                    document.getElementById('misi').value = editor.getData();
+                });
+            })
+            .catch(error => console.log(error));
+        </script>
+    </x-slot>
 </x-app-layout>
 
-@include('components.editor')
-
-<script>
-    initEditor('tentangEditor')
-    .then(editor => {
-        editor.setData(`{!! $information['tentang'] !!}`);
-        editor.editing.view.document.on('change', (evt, data) => {
-            document.getElementById('tentang').value = editor.getData();
-        });
-    })
-    .catch(error => console.log(error));
-
-    initEditor('visiEditor')
-    .then(editor => {
-        editor.setData(`{!! $information['visi'] !!}`);
-        editor.editing.view.document.on('change', (evt, data) => {
-            document.getElementById('visi').value = editor.getData();
-        });
-    })
-    .catch(error => console.log(error));
-    
-    initEditor('misiEditor', 'misi')
-    .then(editor => {
-        editor.setData(`{!! $information['misi'] !!}`);
-        editor.editing.view.document.on('change', (evt, data) => {
-            document.getElementById('misi').value = editor.getData();
-        });
-    })
-    .catch(error => console.log(error));
-</script>

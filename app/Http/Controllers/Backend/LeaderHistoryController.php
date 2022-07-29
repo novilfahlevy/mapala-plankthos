@@ -126,7 +126,7 @@ class LeaderHistoryController extends Controller
 
             $photo = $request->file('photo');
             if ($photo) {
-                $filename = $this->saveFile($photo, 1800, 2400, $leader->photo_url);
+                $filename = $this->resizeAndSave($photo, 1800, 2400, $leader->photo_url);
                 if ($filename) {
                     $leader->photo_url = $filename;
                 }
