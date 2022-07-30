@@ -41,7 +41,7 @@
                   <div>
                     <p class="mb-2">Foto</p>
                     <label
-                      :class="`border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex ${areThereSomeFiles ? 'items-start justify-start' : 'items-center justify-center'} gap-2 p-2 h-[300px] w-[500px]`"
+                      :class="`border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer overflow-y-scroll flex flex-wrap ${areThereSomeFiles ? 'items-start justify-start' : 'items-center justify-center'} gap-2 p-2 h-[300px] w-[500px]`"
                       id="dropzone"
                     >
                       <input type="file" name="photos[]" class="hidden" multiple @change="generatePhotoBase64">

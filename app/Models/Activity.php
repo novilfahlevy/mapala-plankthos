@@ -34,6 +34,18 @@ class Activity extends Model
     {
         return $this->hasMany(ActivityPhoto::class, 'activity_id', 'id');
     }
+    
+    // Attributes
+
+    public function getDivisionNameAttribute()
+    {
+        return $this->division ? $this->division->name : 'Umum';
+    }
+
+    public function getUserNameAttribute()
+    {
+        return $this->user ? $this->user->name : 'user';
+    }
 
     // Scopes
 

@@ -50,9 +50,11 @@ class InformationController extends Controller
                     $this->saveInformation('tentang', $request->tentang);
                     
                     if ($request->file('struktur')) {
+                        $request->validate(['struktur' => ['file', 'max:2000']]);
+
                         $structureFile = $request->file('struktur');
                         $oldFilename = Information::select('content')->whereTitle('struktur')->first();
-                        $filename = $this->resizeAndSave($structureFile, 400, 600, $oldFilename ? $oldFilename->content : null);
+                        $filename = $this->resizeAndSave($structureFile, 1800, 2400, $oldFilename ? $oldFilename->content : null);
                         $this->saveInformation('struktur', $filename);
                     }
 
