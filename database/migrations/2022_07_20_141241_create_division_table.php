@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
+            $table->string('logo_url', 50);
+            $table->string('background_url', 50);
             $table->timestamps();
         });
     }

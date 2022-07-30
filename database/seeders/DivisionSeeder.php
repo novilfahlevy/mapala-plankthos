@@ -15,8 +15,8 @@ class DivisionSeeder extends Seeder
      */
     public function run()
     {
-        Division::create(['name' => 'Divisi Mangrove', 'slug' => 'divisi-mangrove', 'description' => '']);
-        Division::create(['name' => 'Divisi Lamun', 'slug' => 'divisi-lamun', 'description' => '']);
-        Division::create(['name' => 'Divisi Karang', 'slug' => 'divisi-karang', 'description' => '']);
+        // Division::create(['name' => 'Divisi Mangrove', 'slug' => 'divisi-mangrove', 'description' => '']);
+        // Division::create(['name' => 'Divisi Lamun', 'slug' => 'divisi-lamun', 'description' => '']);
+        // Division::create(['name' => 'Divisi Karang', 'slug' => 'divisi-karang', 'description' => '']);
     }
 }

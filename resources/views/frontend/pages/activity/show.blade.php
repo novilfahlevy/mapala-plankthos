@@ -5,6 +5,15 @@
 <div class="blog-page mt-20 lg:mt-32">
   <div class="container">
     <div class="row">
+      <div class="col-12 px-0 mb-3">
+        <p>
+          <a href="{{ url('/') }}">Beranda</a>
+          <span class="px-2">></span>
+          <a href="{{ route('kegiatan.index') }}">Kegiatan</a>
+          <span class="px-2">></span>
+          <span class="text-blue-800">{{ $activity->title }}</span>
+        </p>
+      </div>
       <div class="col-12 col-lg-4 bg-slate-50 min-h-auto mb-3 lg:mb-10 p-4">
         <img src="{{ asset('storage/uploads/'.$activity->thumbnail_url) }}" class="mb-3" alt="{{ $activity->title }}" />
         <div class="flex items-center gap-3">
@@ -28,7 +37,8 @@
               <div class="post-information pt-0">
                 <h2>{{ $activity->title }}</h2>
                 <div class="entry-meta">
-                  <span class="author-meta"><i class="bi bi-people"></i> <a href="#">Divisi Mangrove</a></span>
+                  <span class="author-meta"><i class="bi bi-person"></i> <a href="#">Diunggah oleh {{ $activity->user->name }}</a></span>
+                  <span class="author-meta"><i class="bi bi-people"></i> <a href="#">{{ $activity->division ? $activity->division->name : 'Umum' }}</a></span>
                   <span><i class="bi bi-calendar"></i> {{ $activity->created_at->format('d F Y') }}</span>
                 </div>
                 <div class="entry-content">

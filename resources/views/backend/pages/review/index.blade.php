@@ -17,25 +17,25 @@
               <table class="border-collapse table-fixed w-full text-sm mb-5">
                 <thead>
                   <tr>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-900 dark:text-slate-200 text-left">
                       No
                     </th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-900 dark:text-slate-200 text-left">
                       Foto
                     </th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-900 dark:text-slate-200 text-left">
                       Nama
                     </th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-900 dark:text-slate-200 text-left">
                       Profesi
                     </th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-900 dark:text-slate-200 text-left">
                       Ulasan
                     </th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-900 dark:text-slate-200 text-left">
                       Tanggal dibuat
                     </th>
-                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+                    <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-900 dark:text-slate-200 text-left">
                       Aksi
                     </th>
                   </tr>
@@ -43,25 +43,25 @@
                 <tbody class="bg-white dark:bg-slate-800">
                   @foreach ($reviews as $review)
                   <tr>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-900">
                       {{ (($reviews->perPage() * $reviews->currentPage()) - $reviews->perPage()) + ($loop->index + 1) }}
                     </td>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-900">
                       <img src="{{ asset('storage/uploads/'.$review->photo_url) }}" width="100" height="100" alt="Ketua Pendahulu">
                     </td>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       {{ $review->name }}
                     </td>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       {{ $review->position }}
                     </td>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       {{ strlen($review->comment) > 10 ? substr($review->comment, 0, 10).'...' : $review->comment }}
                     </td>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       {{ $review->created_at->format('d F Y') }}
                     </td>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                           <svg class="fill-current h-5 w-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

@@ -36,6 +36,7 @@ class InformationSeeder extends Seeder
         Information::create(['title' => 'instagram', 'content' => 'instagram.com']);
         Information::create(['title' => 'facebook', 'content' => 'facebook.com']);
         Information::create(['title' => 'youtube', 'content' => 'youtube.com']);
+        Information::create(['title' => 'bumo', 'content' => '']);
 
         Information::create(['title' => 'whatsapp', 'content' => '08123456789']);
         Information::create(['title' => 'email', 'content' => 'mapala@gmail.com']);

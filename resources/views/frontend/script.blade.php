@@ -219,13 +219,13 @@
     /**
     * Testimonials slider
     */
-    new Swiper('.testimonials-slider', {
+    const divisionSwiper = new Swiper('.testimonials-slider', {
       speed: 600,
       loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false
-      },
+      // autoplay: {
+      //   delay: 5000,
+      //   disableOnInteraction: false
+      // },
       slidesPerView: 'auto',
       pagination: {
         el: '.swiper-pagination',
@@ -233,6 +233,14 @@
         clickable: true
       }
     });
+
+    // divisionSwiper.on('slideChange', function (slider) {
+    //   const backgroundUrl = slider.el.querySelector('.swiper-slide').dataset.backgroundUrl;
+    //   const backgroundElem = document.querySelector('.testimonials');
+    //   backgroundElem.style.background = `url(${backgroundUrl}) no-repeat`;
+    //   backgroundElem.style.backgroundPosition = 'center center';
+    //   backgroundElem.style.backgroundSize = 'cover';
+    // });
 
   })()
 </script>

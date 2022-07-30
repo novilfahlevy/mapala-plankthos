@@ -70,7 +70,7 @@
                 <div class="flex flex-col mb-5">
                   <label for="title" class="mb-2">Divisi</label>
                   <select name="divisionId" id="divisionId">
-                    <option value="">Umum (tidak terkait divisi manapun)</option>
+                    <option value="">Umum (tidak terfokus divisi manapun)</option>
                     @foreach ($divisions as $division)
                     <option value="{{ $division->id }}">{{ $division->name }}</option>
                     @endforeach

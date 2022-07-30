@@ -150,6 +150,13 @@
                                 @enderror
                             </div>
                             <div>
+                                <label for="bumo" class="mb-2 block">B.U.M.O</label>
+                                <x-input type="text" name="bumo" id="bumo" class="w-full" value="{{ $information['bumo'] }}"></x-input>
+                                @error('bumo')
+                                <p class="text-red-800 mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
                                 <label for="location" class="mb-2 block">Lokasi (embed Google Maps)</label>
                                 <textarea type="text" name="location" id="location" class="w-full" placeholder="Beserta tag iframe" cols="30" rows="10">
                                     {{ $information['location'] }}

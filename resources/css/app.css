@@ -4,6 +4,7 @@
 
 .logo h1 {
   font-size: 36px;
+  font-family: 'Lucida Sans';
   margin: 0;
   padding: 0;
   line-height: 1;
@@ -15,10 +16,10 @@
     1.2px 1.2px 0 #000;
 }
 .logo h1 span {
-  color: #3ec1d5;
+  color: rgb(255, 255, 255);
 }
 .logo h1 a, .logo h1 a:hover {
-  color: #fff;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 .logo img {

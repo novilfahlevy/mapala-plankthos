@@ -43,7 +43,7 @@
                       @enderror
                     </div>
                     <div class="flex flex-col mb-5">
-                      <label for="nim" class="mb-2">NIM</label>
+                      <label for="nim" class="mb-2">NIA</label>
                       <x-input type="text" name="nim" id="nim" required />
                       @error('nim')
                       <p class="text-red-800 mt-2">{{ $message }}</p>

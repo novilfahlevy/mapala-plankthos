@@ -5,6 +5,13 @@
 <div class="blog-page mt-20 lg:mt-32">
   <div class="container">
     <div class="row">
+      <div class="col-12">
+        <p>
+          <a href="{{ url('/') }}">Beranda</a>
+          <span class="px-2">></span>
+          <span class="text-blue-800">{{ $division->name }}</span>
+        </p>
+      </div>
       <div class="col-12 col-lg-4">
         <h1 class="mt-2 text-lg">{{ $division->name }}</h1>
         <p>{{ $division->description }}</p>
@@ -30,7 +37,7 @@
                         href="{{ route('kegiatan.show', $activity->slug) }}"
                         class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:!opacity-100 cursor-pointer flex flex-col items-center justify-center"
                       >
-                        <h5 class="text-white">{{ strlen($activity->title) > 30 ? substr($activity->title, 0, 30).'...' : $activity->title }}</h5>
+                        <h5 class="text-white text-center">{{ strlen($activity->title) > 30 ? substr($activity->title, 0, 30).'...' : $activity->title }}</h5>
                         <p class="text-white flex flex-col items-center gap-1">
                           <span><i class="bi bi-calendar mr-2"></i> {{ $activity->tanggal->format('d F Y') }}</span>
                           <span><i class="bi bi-people mr-2"></i> {{ $activity->division ? $activity->division->name : 'Umum' }}</span>

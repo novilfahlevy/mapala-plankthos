@@ -94,6 +94,7 @@ class InformationController extends Controller
                     $this->saveInformation('whatsapp', $request->whatsapp);
                     $this->saveInformation('email', $request->email);
                     $this->saveInformation('location', $request->location);
+                    $this->saveInformation('bumo', $request->bumo);
 
                     $this->logAction('Mengedit informasi tentang kontak.');
 

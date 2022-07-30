@@ -31,6 +31,13 @@
     <!-- Start single blog -->
     <div class="col-12 col-lg-8">
       <div class="row">
+        <div class="col-12">
+          <p>
+            <a href="{{ url('/') }}">Beranda</a>
+            <span class="px-2">></span>
+            <a href="{{ route('kegiatan.index') }}" class="text-blue-800">Kegiatan</a>
+          </p>
+        </div>
         <div class="col">
           <div class="page-head-blog">
             <div class="single-blog-page">

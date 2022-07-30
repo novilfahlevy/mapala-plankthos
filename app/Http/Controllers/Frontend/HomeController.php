@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\Division;
 use App\Models\Gallery;
 use App\Models\Information;
 use App\Models\LeaderHistory;
@@ -25,6 +26,7 @@ class HomeController extends Controller
         $galleries = Gallery::all();
         $reviews = Review::all();
         $activities = Activity::query();
-        return view('frontend.pages.index', compact('information', 'leaders', 'galleries', 'reviews', 'activities'));
+        $divisions = Division::query();
+        return view('frontend.pages.index', compact('information', 'leaders', 'galleries', 'reviews', 'activities', 'divisions'));
     }
 }

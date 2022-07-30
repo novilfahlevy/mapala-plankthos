@@ -9,7 +9,7 @@ class Division extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'logo_url', 'background_url'];
 
     public function activities()
     {

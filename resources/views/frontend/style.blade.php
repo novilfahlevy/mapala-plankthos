@@ -245,12 +245,10 @@ div#preloader {
   padding: 0;
   line-height: 1;
   font-weight: bold;
-}
-#header .logo h1 span {
-  color: #3ec1d5;
+  font-family: 'Lucida Sans';
 }
 #header .logo h1 a, #header .logo h1 a:hover {
-  color: #fff;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 #header .logo img {

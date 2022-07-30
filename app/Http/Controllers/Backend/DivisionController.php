@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Division;
+use App\Trait\Upload;
 use App\Trait\UserAction;
 use Exception;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 
 class DivisionController extends Controller
 {
-    use UserAction;
+    use UserAction, Upload;
 
     /**
      * Display a listing of the resource.
@@ -52,6 +53,23 @@ class DivisionController extends Controller
             $division->name = $request->name;
             $division->slug = Str::slug($request->name);
             $division->description = $request->description;
+
+            $logo = $request->file('logo');
+            if ($logo) {
+                $filename = $this->resizeAndSave($logo, 400, 400);
+                if ($filename) {
+                    $division->logo_url = $filename;
+                }
+            }
+
+            $background = $request->file('background');
+            if ($background) {
+                $filename = $this->resizeAndSave($background, 1080, 810);
+                if ($filename) {
+                    $division->background_url = $filename;
+                }
+            }
+
             $division->save();
 
             $this->logAction('Membuat divisi "'.$request->name.'"');
@@ -110,6 +128,22 @@ class DivisionController extends Controller
             $division->name = $request->name;
             $division->slug = Str::slug($request->name);
             $division->description = $request->description;
+
+            $logo = $request->file('logo');
+            if ($logo) {
+                $filename = $this->resizeAndSave($logo, 400, 400, $division->logo_url);
+                if ($filename) {
+                    $division->logo_url = $filename;
+                }
+            }
+
+            $background = $request->file('background');
+            if ($background) {
+                $filename = $this->resizeAndSave($background, 1080, 810, $division->background_url);
+                if ($filename) {
+                    $division->background_url = $filename;
+                }
+            }
 
             $division->save();
 

@@ -87,15 +87,15 @@
     <div class="row">
       <div class="col-md-6 flex justify-center items-center flex-col mb-20 md:mb-0">
         <div class="section-headline text-center">
-          <h2>Jumlah Angkatan</h2>
+          <h2 style="font-family: 'Segoe UI';">Jumlah Angkatan</h2>
         </div>
-        <h2>{{ $information['angkatan'] }}</h2>
+        <h2 style="font-family: 'Segoe UI';">{{ $information['angkatan'] }}</h2>
       </div>
       <div class="col-md-6 flex justify-center items-center flex-col">
         <div class="section-headline text-center">
-          <h2>Jumlah Anggota</h2>
+          <h2 style="font-family: 'Segoe UI';">Jumlah Anggota</h2>
         </div>
-        <h2>{{ $information['anggota'] }}</h2>
+        <h2 style="font-family: 'Segoe UI';">{{ $information['anggota'] }}</h2>
       </div>
       <!-- End col-->
     </div>
@@ -145,7 +145,7 @@
 <!-- End Services Section -->
 
 <!-- ======= Testimonials Section ======= -->
-<div id="testimonials" class="testimonials mb-32">
+{{-- <div id="testimonials" class="testimonials mb-32">
   <div class="container">
     <div class="testimonials-slider swiper">
       <div class="swiper-wrapper">
@@ -171,8 +171,36 @@
     </div>
 
   </div>
-</div>
+</div> --}}
 <!-- End Testimonials Section -->
+
+<!-- ======= Division Section ======= -->
+<div id="divisi" class="testimonials mb-32">
+  <div class="container">
+    <div class="testimonials-slider swiper">
+      <div class="swiper-wrapper relative">
+        @forelse ($divisions->get() as $division)
+        <div class="swiper-slide" data-background-url="{{ asset('storage/uploads/'.$division->background_url) }}">
+          <a href="{{ route('divisi.show', $division->slug) }}" class="testimonial-item">
+            <img src="{{ asset('storage/uploads/'.$division->logo_url) }}" class="testimonial-img" alt="{{ $division->name }}">
+            <h3>{{ $division->name }}</h3>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              {{ $division->description }}
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </a>
+        </div>
+        @empty
+        <h5 style="color: white; margin: auto;">Belum ada divisi</h5>
+        @endforelse
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</div>
+<!-- End Division Section -->
 
 <!-- ======= Kegiatan Section ======= -->
 <div id="kegiatan" class="blog-area mb-32">
@@ -236,8 +264,8 @@
     </div>
     <div class="row justify-center">
       @forelse ($leaders as $leader)
-      <div class="col-12 col-md-4 col-lg-3 d-flex mb-3">
-        <div class="single-team-member">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex mb-3">
+        {{-- <div class="single-team-member">
           <div class="team-img">
             <a href="#">
               <img src="{{ asset('storage/uploads/'.$leader->photo_url) }}" alt="{{ $leader->name }}">
@@ -249,6 +277,18 @@
               @endif
               <p class="text-light">{{ $leader->from_year }} {{ $leader->to_year ? ' - '.$leader->to_year : '' }}</p>
             </div>
+          </div>
+        </div> --}}
+        <div class="single-team-member flex flex-col justify-between">
+          <div class="flex-1">
+            <a href="#">
+              <img src="{{ asset('storage/uploads/'.$leader->photo_url) }}" class="h-full" alt="{{ $leader->name }}">
+            </a>
+          </div>
+          <div class="team-content text-center py-3">
+            <h4 class="mb-2 text-sm">{{ $leader->name }}</h4>
+            {{-- <p>{{ $leader->nim }}</p> --}}
+            <p class="mb-0">{{ $leader->from_year }} {{ $leader->to_year ? ' - '.$leader->to_year : '' }}</p>
           </div>
         </div>
       </div>
