@@ -33,17 +33,10 @@ class AppServiceProvider extends ServiceProvider
 
         // Pass information data to footer
         View::composer(
-            'frontend.layouts.footer',
+            ['frontend.layouts.header', 'frontend.layouts.footer'],
             function($view) {
                 $information = $this->getAllInformations();
                 $view->with('information', $information);
-            }
-        );
-        View::composer(
-            'frontend.layouts.header',
-            function($view) {
-                $divisions = Division::all();
-                $view->with('divisions', $divisions);
             }
         );
     }

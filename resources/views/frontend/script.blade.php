@@ -219,7 +219,7 @@
     /**
     * Testimonials slider
     */
-    const divisionSwiper = new Swiper('.testimonials-slider', {
+    const divisionSwiper = new Swiper('.division-slider', {
       speed: 600,
       loop: true,
       // autoplay: {

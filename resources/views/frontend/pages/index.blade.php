@@ -144,43 +144,32 @@
 </div>
 <!-- End Services Section -->
 
-<!-- ======= Testimonials Section ======= -->
-{{-- <div id="testimonials" class="testimonials mb-32">
-  <div class="container">
-    <div class="testimonials-slider swiper">
-      <div class="swiper-wrapper">
-        @forelse ($reviews as $review)
-        <div class="swiper-slide">
-          <div class="testimonial-item">
-            <img src="{{ asset('storage/uploads/'.$review->photo_url) }}" class="testimonial-img" alt="{{ $review->name }}">
-            <h3>{{ $review->name }}</h3>
-            <h4>{{ $review->position }}</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              {{ $review->comment }}
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-        </div>
-        @empty
-        <h5 style="color: white; margin: auto;">Belum ada ulasan</h5>
-        @endforelse
-
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-  </div>
-</div> --}}
-<!-- End Testimonials Section -->
-
 <!-- ======= Division Section ======= -->
-<div id="divisi" class="testimonials mb-32">
+<div id="divisi" class="division-slider overflow-hidden mb-32">
+  <div class="swiper-wrapper">
+    @forelse ($divisions->get() as $division)
+    <div class="h-[400px] w-full relative flex flex-col justify-center items-center swiper-slide" style="background: url({{ asset('storage/uploads/'.$division->background_url) }}) no-repeat; background-position: center center; background-size: cover;">
+      <div class="absolute inset-0 bg-black bg-opacity-50 z-10">
+      </div>
+      <a href="{{ route('divisi.show', $division->slug) }}" class="flex flex-col items-center justify-center z-50">
+        <img src="{{ asset('storage/uploads/'.$division->logo_url) }}" class="w-28 h-28 rounded-full border mb-4" alt="{{ $division->name }}">
+        <h3 class="text-white text-md">{{ $division->name }}</h3>
+        <p class="text-white">{{ $division->description }}</p>
+      </a>
+    </div>
+    @empty
+    <h5 style="color: white; margin: auto;">Belum ada divisi</h5>
+    @endforelse
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+{{-- <div id="divisi" class="testimonials mb-32">
   <div class="container">
-    <div class="testimonials-slider swiper">
-      <div class="swiper-wrapper relative">
+    <div class="testimonials-slider">
+      <div class="swiper-wrapper">
         @forelse ($divisions->get() as $division)
-        <div class="swiper-slide" data-background-url="{{ asset('storage/uploads/'.$division->background_url) }}">
+        <div class="swiper-slide">
           <a href="{{ route('divisi.show', $division->slug) }}" class="testimonial-item">
             <img src="{{ asset('storage/uploads/'.$division->logo_url) }}" class="testimonial-img" alt="{{ $division->name }}">
             <h3>{{ $division->name }}</h3>
@@ -197,9 +186,8 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
-
   </div>
-</div>
+</div> --}}
 <!-- End Division Section -->
 
 <!-- ======= Kegiatan Section ======= -->
@@ -265,20 +253,6 @@
     <div class="row justify-center">
       @forelse ($leaders as $leader)
       <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex mb-3">
-        {{-- <div class="single-team-member">
-          <div class="team-img">
-            <a href="#">
-              <img src="{{ asset('storage/uploads/'.$leader->photo_url) }}" alt="{{ $leader->name }}">
-            </a>
-            <div class="team-social-icon flex flex-col items-center">
-              <h4 class="text-white">{{ $leader->name }}</h4>
-              @if ($leader->nim)
-              <p class="text-light">({{ $leader->nim }})</p>
-              @endif
-              <p class="text-light">{{ $leader->from_year }} {{ $leader->to_year ? ' - '.$leader->to_year : '' }}</p>
-            </div>
-          </div>
-        </div> --}}
         <div class="single-team-member flex flex-col justify-between">
           <div class="flex-1">
             <a href="#">
@@ -299,47 +273,6 @@
   </div>
 </div>
 <!-- End Team Section -->
-
-<!-- ======= Portfolio Section ======= -->
-{{-- <div id="galeri" class="area-padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="section-headline text-center">
-          <h2>Galeri</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="row awesome-project-content portfolio-container">
-      @forelse ($galleries as $gallery)
-      <!-- portfolio-item start -->
-      <div class="col-12 col-md-4 portfolio-item filter-app portfolio-item">
-        <div class="single-awesome-project">
-          <div class="awesome-img">
-            <a href="#"><img src="{{ asset('storage/uploads/'.$gallery->photo_url) }}" alt="{{ $gallery->title }}"></a>
-            <div class="add-actions text-center">
-              <div class="project-dec">
-                <a class="portfolio-lightbox" data-gallery="myGallery" href="{{ asset('storage/uploads/'.$gallery->photo_url) }}">
-                  <h4>{{ $gallery->title }}</h4>
-                  @if ($gallery->division)
-                  <span>{{ $gallery->division }}</span>
-                  @endif
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- portfolio-item end -->
-      @empty
-      <h5 class="text-center">Belum ada data</h5>
-      @endforelse
-
-    </div>
-  </div>
-</div>
-<!-- End Portfolio Section --> --}}
 
 <!-- ======= Struktur Organisasi ======= -->
 <div id="struktur" class="our-team-area mb-32">

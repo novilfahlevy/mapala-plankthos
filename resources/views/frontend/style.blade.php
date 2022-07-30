@@ -1267,17 +1267,17 @@ div#preloader {
   margin: 0 auto 15px auto;
   color: #eee;
 }
-.testimonials .swiper-pagination {
-  margin-top: 20px;
+.swiper-pagination {
+  margin-top: -40px;
   position: relative;
 }
-.testimonials .swiper-pagination .swiper-pagination-bullet {
+.swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
 }
-.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+.swiper-pagination .swiper-pagination-bullet-active {
   background-color: #3ec1d5;
 }
 @media (min-width: 992px) {

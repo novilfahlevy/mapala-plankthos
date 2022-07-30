@@ -12,18 +12,26 @@
               <p>Ikuti media sosial kami:</p>
               <div class="footer-icons">
                 <ul>
+                  @if ($information['facebook'])
                   <li>
                     <a href="{{ $information['facebook'] }}"><i class="bi bi-facebook"></i></a>
                   </li>
+                  @endif
+                  @if ($information['twitter'])
                   <li>
                     <a href="{{ $information['twitter'] }}"><i class="bi bi-twitter"></i></a>
                   </li>
+                  @endif
+                  @if ($information['instagram'])
                   <li>
                     <a href="{{ $information['instagram'] }}"><i class="bi bi-instagram"></i></a>
                   </li>
+                  @endif
+                  @if ($information['youtube'])
                   <li>
                     <a href="{{ $information['youtube'] }}"><i class="bi bi-youtube"></i></a>
                   </li>
+                  @endif
                 </ul>
               </div>
             </div>

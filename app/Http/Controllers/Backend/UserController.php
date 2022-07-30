@@ -20,7 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        $id = auth()->user()->id;
+        $users = User::orderByRaw('IF(id = '.$id.', 1, 0) ASC')->paginate(10);
         return view('backend.pages.users.index', compact('users'));
     }
     
@@ -150,6 +151,13 @@ class UserController extends Controller
                 'message' => 'Pengguna berhasil dihapus.'
             ]);
         } catch (Exception $error) {
+            if ($error->getCode() == 23000) {
+                return redirect()->route('pengguna.index')->with('alert', [
+                    'status' => $error->getCode(),
+                    'message' => 'Pengguna tidak dapat dihapus karena masih terhubung dengan beberapa data.'
+                ]);
+            }
+
             return redirect()->route('pengguna.index')->with('alert', [
                 'status' => $error->getCode(),
                 'message' => $error->getMessage()
