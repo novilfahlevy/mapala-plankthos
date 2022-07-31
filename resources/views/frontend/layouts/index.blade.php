@@ -6,8 +6,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Mapala Plankthos</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="Mahasiswa Pecinta Alam (Mapala) Fakultas Teknik Universitas Mulawarman" name="description">
+  <meta content="Mapala, Pecinta alam, mahasiswa, Samarinda, Teknik, Mulawarman" name="keywords">
 
   <!-- Favicons -->
   <link href="{{ asset('storage/img/logompl.png') }}" rel="icon">
