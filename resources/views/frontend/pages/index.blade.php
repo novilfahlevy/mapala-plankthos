@@ -218,7 +218,7 @@
             >
               <h5 class="text-white">{{ strlen($activity->title) > 30 ? substr($activity->title, 0, 30).'...' : $activity->title }}</h5>
               <p class="text-white flex flex-col items-center gap-1">
-                <span><i class="bi bi-calendar mr-2"></i> {{ $activity->tanggal->format('d F Y') }}</span>
+                <span><i class="bi bi-calendar mr-2"></i> {{ $activity->tanggal->translatedFormat('d F Y') }}</span>
                 <span><i class="bi bi-people mr-2"></i> {{ $activity->division_name }}</span>
               </p>
             </a>

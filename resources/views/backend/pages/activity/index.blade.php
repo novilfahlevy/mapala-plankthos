@@ -56,10 +56,10 @@
                       {{ $activity->division_name }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
-                      {{ $activity->tanggal->format('d F Y') }}
+                      {{ $activity->tanggal->translatedFormat('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
-                      {{ $activity->created_at->format('d F Y') }}
+                      {{ $activity->created_at->translatedFormat('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       <x-dropdown align="right" width="48">

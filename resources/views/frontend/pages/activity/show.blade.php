@@ -35,7 +35,7 @@
             <div class="entry-meta pb-3 md:pb-0">
               <span class="author-meta"><i class="bi bi-person"></i> <a href="#">Diunggah oleh {{ $activity->user_name }}</a></span>
               <span class="author-meta"><i class="bi bi-people"></i> <a href="#">{{ $activity->division_name }}</a></span>
-              <span><i class="bi bi-calendar"></i> {{ $activity->created_at->format('d F Y') }}</span>
+              <span><i class="bi bi-calendar"></i> {{ $activity->created_at->translatedFormat('d F Y') }}</span>
             </div>
             <div class="entry-content">
               {!! $activity->content !!}

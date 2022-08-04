@@ -59,7 +59,7 @@
                       {{ strlen($review->comment) > 10 ? substr($review->comment, 0, 10).'...' : $review->comment }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
-                      {{ $review->created_at->format('d F Y') }}
+                      {{ $review->created_at->translatedFormat('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       <x-dropdown align="right" width="48">

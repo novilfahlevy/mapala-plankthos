@@ -53,7 +53,7 @@
                       {{ $leader->from_year }} - {{ $leader->to_year }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
-                      {{ $leader->created_at->format('d F Y') }}
+                      {{ $leader->created_at->translatedFormat('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400">
                       <x-dropdown align="right" width="48">

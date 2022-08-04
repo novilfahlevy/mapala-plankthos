@@ -65,7 +65,7 @@
                 </div>
                 <div class="flex flex-col mb-5">
                   <label for="tanggal" class="mb-2">Tanggal kegiatan</label>
-                  <x-input type="date" name="tanggal" id="tanggal" value="{{ $activity->tanggal->format('Y-m-d') }}" required />
+                  <x-input type="date" name="tanggal" id="tanggal" value="{{ $activity->tanggal->translatedFormat('Y-m-d') }}" required />
                   @error('tanggal')
                   <p class="text-red-800 mt-2">{{ $message }}</p>
                   @enderror
@@ -107,7 +107,7 @@
                   <div class="flex items-center justify-between mb-5">
                     <p>{{ $comment->name }} {{ $comment->email ? '('.$comment->email.')' : '' }}</p>
                     <div class="flex items-center">
-                      <p class="mr-5">{{ $comment->created_at->format('d F Y, H:m:s') }}</p>
+                      <p class="mr-5">{{ $comment->created_at->translatedFormat('d F Y, H:m:s') }}</p>
                       <form
                         action="{{ route('admin.komentar-kegiatan.destroy', $comment->id) }}"
                         method="POST"

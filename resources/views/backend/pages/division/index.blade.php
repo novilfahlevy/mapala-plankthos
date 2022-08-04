@@ -41,7 +41,7 @@
                       {{ $division->name }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
-                      {{ $division->created_at->format('d F Y') }}
+                      {{ $division->created_at->translatedFormat('d F Y') }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-900">
                       <x-dropdown align="right" width="48">
