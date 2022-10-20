@@ -6,7 +6,7 @@ Requirement:
 4. Pastikan sudah membuat databasenya
 
 Jalankan dilokal:
-1. Close atau download zip
+1. Clone atau download zip
 2. Buka terminal
 3. Masuk ke dalam folder mapala-plankthos yang barusan diclone atau ekstrak (zip)
 4. Copy file .env
