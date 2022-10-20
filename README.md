@@ -3,7 +3,8 @@ Requirement:
 1. XAMPP
 2. PHP 8
 3. Mysql 5
-4. Pastikan sudah membuat databasenya
+4. Composer 2 [disini](https://getcomposer.org/Composer-Setup.exe)
+5. Pastikan sudah membuat databasenya
 
 Jalankan dilokal:
 1. Clone atau download zip
